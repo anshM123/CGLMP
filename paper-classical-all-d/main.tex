@@ -64,8 +64,10 @@ of Durt, Kaszlikowski and \.Zukowski (DKZ) are necessarily the optimal ones for 
 maximally entangled states. The optimality statement is equivalent to an inequality for $d$-tuples of unitaries of
 order four (a $\Z_4$ clock model). We prove that inequality for every $d$ when the unitaries commute. In physical
 terms: among maximally entangled strategies whose four link operators coincide, the DKZ measurements are optimal
-and, up to local unitaries, unique, in every dimension $d$. The general (non-commuting) case remains open for
-$d\ge 13$; for $d\le 12$ it was settled earlier by exact computer-assisted certificates.
+and, up to local unitaries, unique, in every dimension $d$. We also prove the inequality, for every $d$, for a class
+of genuinely non-commuting families in which each unitary switches between the values of two optimal
+configurations. The general non-commuting case remains open for $d\ge 13$; for $d\le 12$ it was settled earlier by
+exact computer-assisted certificates.
 \end{abstract}
 
 \maketitle
@@ -234,8 +236,9 @@ of the clock model built from all three-site marginals is exact for $d\le8$ but 
 (numerical; Section~\ref{sec:discussion}).
 
 \subsection{What remains open}
-Theorem~\ref{thm:B} covers commuting families. Whether $F(V)\le\FD$ holds for non-commuting families, which is
-what remains of the optimality statement of Problem~27B on maximally entangled states, is open for $d\ge13$. In
+Theorem~\ref{thm:B} covers commuting families, and Theorem~\ref{thm:D} in Section~\ref{sec:discussion} covers the
+non-commuting two-window families. Whether $F(V)\le\FD$ holds for all non-commuting families, which is what remains
+of the optimality statement of Problem~27B on maximally entangled states, is open for $d\ge13$. In
 Section~\ref{sec:discussion} we formulate an operator version of Theorem~\ref{thm:A} that would imply it. The
 cyclic symmetry extends to operators verbatim and the exchange identity only partially; we do not know operator
 versions of the continuous inequality and of the junction estimate.
@@ -932,10 +935,62 @@ unchanged, and changes the pairing by $\sum_{t\ne x,x+1}\delta(x-t)\,\tau(XC_t)\
 In the non-commutative case such subprojections need not exist, and we do not know operator analogues of
 Proposition~\ref{prop:cont} and of the junction inequality.
 
+\subsection{A non-commuting class: two-window families}
+There is one class of genuinely non-commuting families where Theorem~\ref{thm:B} extends directly. In it, every
+unitary switches between the values of two optimal configurations.
+
+\begin{theorem}[two-window families]\label{thm:D}
+Let $a,a'\in\Z_4^d$ be one-step configurations. Let $P_0,\dots,P_{d-1}$ be arbitrary orthogonal projections in a von
+Neumann algebra with faithful normal tracial state $\tau$ (for instance $M_M(\C)$ with $\tr$), and put
+\[
+V_k=i^{-a_k}(\one-P_k)+i^{-a'_k}P_k\qquad(0\le k\le d-1).
+\]
+Then $F(V)\le\FD$. Equality holds if and only if the projections $P_k$ with $a_k\ne a'_k$ are totally ordered (so that
+all $V_k$ commute) and every joint eigen-configuration is one-step.
+\end{theorem}
+
+\begin{proof}
+Fix $j<k$, put $m=k-j$, $\psi=\psi_m$, and let $c_t=\Re[h_mi^t]$, so that $(c_0,c_1,c_2,c_3)=(\sec\psi,\csc\psi,-\sec\psi,-\csc\psi)$.
+With $p_k=\tau(P_k)$ and $q_{jk}=\tau(P_jP_k)=\tau(P_jP_kP_j)\in[0,\min(p_j,p_k)]$,
+\[
+\tau(V_jV_k^*)=i^{a_k-a_j}(1-p_j-p_k+q_{jk})+i^{a'_k-a_j}(p_k-q_{jk})+i^{a_k-a'_j}(p_j-q_{jk})+i^{a'_k-a'_j}q_{jk},
+\]
+so $\Re[h_m\tau(V_jV_k^*)]=\ell_{jk}(p_j,p_k)+w_{jk}q_{jk}$, with $\ell_{jk}$ affine and
+$w_{jk}=c_{a_k-a_j}+c_{a'_k-a'_j}-c_{a'_k-a_j}-c_{a_k-a'_j}$. If $a_j=a'_j$ or $a_k=a'_k$ then $w_{jk}=0$.
+
+Otherwise, let $\varepsilon=a_k-a_j$ and $\varepsilon'=a'_k-a'_j$, both in $\{0,1\}$ since the configurations are
+one-step and $j<k$, and let $\delta=a'_j-a_j\in\{1,2,3\}$. The condition $a_k\ne a'_k$ reads
+$\delta+\varepsilon'-\varepsilon\ne0$. Evaluating the four cases:
+\begin{itemize}
+\item $(\varepsilon,\varepsilon')=(0,0)$: $w_{jk}=2c_0-c_\delta-c_{-\delta}$, which is $2\sec\psi$ for $\delta$ odd and $4\sec\psi$ for
+$\delta=2$.
+\item $(1,1)$: $w_{jk}=2c_1-c_{1+\delta}-c_{1-\delta}$, which is $2\csc\psi$ for $\delta$ odd and $4\csc\psi$ for $\delta=2$.
+\item $(0,1)$ with $\delta\in\{1,2\}$, and $(1,0)$ with $\delta\in\{2,3\}$: $w_{jk}=c_0+c_1-c_{\delta+\varepsilon'}-c_{\varepsilon-\delta}=2(\sec\psi+\csc\psi)$.
+\end{itemize}
+Hence $w_{jk}\ge2\min(\sec\psi_m,\csc\psi_m)>0$ for every such pair.
+
+Consequently $F(V)=L(p)+\sum w_{jk}q_{jk}\le L(p)+\sum w_{jk}\min(p_j,p_k)$, where $L$ collects the affine terms and the
+sums run over the pairs with $w_{jk}\ne0$. The right-hand side is $F(V')$ for the family $V'_k=i^{-a_k}(\one-P'_k)+i^{-a'_k}P'_k$
+with the nested projections $P'_k=\mathbf 1_{[0,p_k)}$ in $L^\infty[0,1]$, which has the same traces and
+$\tau(P'_jP'_k)=\min(p_j,p_k)$. The family $V'$ commutes, so $F(V')\le\FD$ by Theorem~\ref{thm:B}.
+
+For equality, $q_{jk}=\min(p_j,p_k)$ is needed for every pair with $w_{jk}>0$. If $p_j\le p_k$, this gives
+$\tau(P_j(\one-P_k)P_j)=0$, hence $P_j\le P_k$ because $\tau$ is faithful. So the $P_k$ with $a_k\ne a'_k$ form a
+chain, all $V_k$ commute, and the equality statement of Theorem~\ref{thm:B} applies. The converse is clear.
+\end{proof}
+
+For $M\ge2$ the families of Theorem~\ref{thm:D} are in general far from commuting: the projections $P_k$ are arbitrary. The
+proof shows that on this class $F$ is exactly affine in the Gram data $\tau(P_jP_k)$ with positive coefficients. This
+turns the local (second-order) optimality of DKZ, whose Hessian involves the same coefficients~\cite{repo}, into a
+global statement. For three or more values per unitary, the corresponding coefficients are no longer all positive,
+so the argument does not extend directly. The script \texttt{check\_two\_window.py} confirms numerically that the smallest
+coefficient equals $2\sec(\pi/2d)$ for $2\le d\le30$, and that $F(V)\le\FD$ for random two-window families.
+
 \subsection{Summary of the status of Problem 27B (maximally entangled part)}
 The inequality $F(V)\le\FD$ (equivalently $I_d\le\IME(d)$ for projective measurements on maximally entangled
-states) is proved for commuting families for all $d$ (this paper), and for all families for $d\le12$ by exact
-certificates~\cite{repo}; for $d=2$ it is Tsirelson's bound. It is open for non-commuting families when $d\ge13$.
+states) is proved for commuting families and for the non-commuting two-window families of Theorem~\ref{thm:D}, for
+all $d$ (this paper), and for all families for $d\le12$ by exact certificates~\cite{repo}; for $d=2$ it is
+Tsirelson's bound. It is open for general non-commuting families when $d\ge13$.
 Within the commutative sector, Corollary~\ref{cor:C} also gives the uniqueness (``necessarily of DKZ form'') asked
 for in~\cite{OQP}.
 

@@ -25,6 +25,7 @@ python swap_test.py 9,3,3 10,3,3 12,3,4 12,4,4
 python classical_sa.py 12
 python check_reduction.py
 python check_constants.py
+python check_two_window.py
 ```
 
 ## What each script checks
@@ -67,3 +68,7 @@ other scripts are self-contained.
   - Random strategies have unequal links (difference >= 1.29) and non-commuting reduced families (commutator >= 1.63).
   - The clock-phase exhaustion for d = 2..7 gives max I_d = I_ME(d), attained by exactly 4d one-step configurations.
 - `check_constants.log`: all stated roundings are valid.
+
+- `check_two_window.py`: Theorem D (two-window families). It checks that the smallest coefficient w_jk over all pairs of
+  one-step configurations equals 2 sec(pi/2d) for d = 2..30, and that F(V) <= F_DKZ for random non-commuting two-window
+  families (d = 3..9, M = 2..4). Log: `../logs/check_two_window.log`.

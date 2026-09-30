@@ -23,3 +23,4 @@ run swap_test        swap_test.py 9,3,3 10,3,3 12,3,4 12,4,4
 run classical_sa     classical_sa.py 12
 run check_reduction  check_reduction.py
 run check_constants  check_constants.py
+run check_two_window check_two_window.py

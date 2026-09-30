@@ -1,0 +1,42 @@
+# command: python check_two_window.py
+# python 3.14.3 | numpy 2.4.6
+(1) smallest coefficient w_jk over all pairs of one-step configurations and all mixed pairs j < k
+   d =  2: min w = 2.828427125,  2 sec(pi/2d) = 2.828427125
+   d =  3: min w = 2.309401077,  2 sec(pi/2d) = 2.309401077
+   d =  4: min w = 2.164784401,  2 sec(pi/2d) = 2.164784401
+   d =  5: min w = 2.102924448,  2 sec(pi/2d) = 2.102924448
+   d =  6: min w = 2.070552361,  2 sec(pi/2d) = 2.070552361
+   d =  7: min w = 2.051433727,  2 sec(pi/2d) = 2.051433727
+   d =  8: min w = 2.039182316,  2 sec(pi/2d) = 2.039182316
+   d =  9: min w = 2.030853224,  2 sec(pi/2d) = 2.030853224
+   d = 10: min w = 2.024930252,  2 sec(pi/2d) = 2.024930252
+   d = 11: min w = 2.020566453,  2 sec(pi/2d) = 2.020566453
+   d = 12: min w = 2.017257921,  2 sec(pi/2d) = 2.017257921
+   d = 13: min w = 2.014689354,  2 sec(pi/2d) = 2.014689354
+   d = 14: min w = 2.012655153,  2 sec(pi/2d) = 2.012655153
+   d = 15: min w = 2.011016559,  2 sec(pi/2d) = 2.011016559
+   d = 16: min w = 2.009677145,  2 sec(pi/2d) = 2.009677145
+   d = 17: min w = 2.008568198,  2 sec(pi/2d) = 2.008568198
+   d = 18: min w = 2.007639675,  2 sec(pi/2d) = 2.007639675
+   d = 19: min w = 2.006854425,  2 sec(pi/2d) = 2.006854425
+   d = 20: min w = 2.006184397,  2 sec(pi/2d) = 2.006184397
+   d = 21: min w = 2.005608087,  2 sec(pi/2d) = 2.005608087
+   d = 22: min w = 2.005108787,  2 sec(pi/2d) = 2.005108787
+   d = 23: min w = 2.004673356,  2 sec(pi/2d) = 2.004673356
+   d = 24: min w = 2.004291342,  2 sec(pi/2d) = 2.004291342
+   d = 25: min w = 2.003954346,  2 sec(pi/2d) = 2.003954346
+   d = 26: min w = 2.003655561,  2 sec(pi/2d) = 2.003655561
+   d = 27: min w = 2.003389418,  2 sec(pi/2d) = 2.003389418
+   d = 28: min w = 2.003151328,  2 sec(pi/2d) = 2.003151328
+   d = 29: min w = 2.002937480,  2 sec(pi/2d) = 2.002937480
+   d = 30: min w = 2.002744692,  2 sec(pi/2d) = 2.002744692
+(2) random two-window families with random projections: max F(V) - F_DKZ
+   d = 3: max F - F_DKZ over 60 random families = +8.882e-16
+   d = 4: max F - F_DKZ over 60 random families = +0.000e+00
+   d = 5: max F - F_DKZ over 60 random families = +1.776e-15
+   d = 6: max F - F_DKZ over 60 random families = +3.553e-15
+   d = 7: max F - F_DKZ over 60 random families = +0.000e+00
+   d = 8: max F - F_DKZ over 60 random families = +2.132e-14
+   d = 9: max F - F_DKZ over 60 random families = +2.842e-14
+ALL CHECKS PASSED
+# wall time: 56 s

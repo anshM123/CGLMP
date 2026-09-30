@@ -75,6 +75,9 @@ Paper: [`paper-classical-all-d/main.pdf`](paper-classical-all-d/main.pdf), *A re
   - It satisfies I_d ≤ I_ME(d).
   - Equality holds if and only if the strategy is DKZ ⊗ 1, up to a local unitary u ⊗ ū.
   - This covers, among others, all 4^d clock-phase strategies (Fourier bases dressed by diagonal phases) and their direct sums.
+- **Theorem D (a non-commuting class, every d).** F(V) ≤ F_DKZ also holds when each unitary switches between the values of two optimal configurations, V_k = i^{−a_k}(1 − P_k) + i^{−a'_k}P_k, with arbitrary, non-commuting projections P_k.
+  - Equality holds only when the P_k are nested.
+  - The proof: on this class F is exactly affine in the overlaps τ(P_j P_k), with coefficients at least 2 sec(π/2d) > 0.
 - **Checks.** `paper-classical-all-d/scripts/` holds the numerical cross-checks (interval arithmetic for all constants), with outputs in `paper-classical-all-d/logs/`. They are not part of the proofs.
 
 ## Status
@@ -83,7 +86,7 @@ The problem statement asks for more than is proved here:
 
 | Claim of OQP 27B | Status here |
 |---|---|
-| DKZ optimal on maximally entangled states | proved for d = 3..12 (projective measurements); proved for **every d** among equal-link (commuting) strategies (result 7); open in general for d ≥ 13 |
+| DKZ optimal on maximally entangled states | proved for d = 3..12 (projective measurements); proved for **every d** among equal-link (commuting) strategies and among the non-commuting two-window families (result 7); open in general for d ≥ 13 |
 | DKZ unique (rigidity) | proved for d = 3..12; for every d among equal-link strategies (result 7); algebraic part proved for all d |
 | Tsirelson bound, all states | exact for d = 3..8 |
 | KL optimality of DKZ | **false** for d = 4..9 (d = 4 first shown by Y. Zhang, 2026) |
