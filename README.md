@@ -2,7 +2,7 @@
 
 **Authors:** Ansh Mishra, Aryan Senthilkumar. **License:** MIT.
 
-This repository contains computer-assisted proofs for the CGLMP Bell inequality, together with the certificates, independent checkers and verification logs. The work addresses IQOQI Vienna Open Quantum Problem 27B, [*The CGLMP inequality and the optimal measurements*](https://oqp.iqoqi.oeaw.ac.at/the-cglmp-inequality-and-the-optimal-measurements).
+This repository contains computer-assisted proofs for the CGLMP Bell inequality, together with the certificates, independent checkers and verification logs. The work addresses part B of IQOQI Vienna Open Quantum Problem 27, [*The power of CGLMP inequalities*](https://oqp.iqoqi.oeaw.ac.at/the-power-of-cglmp-inequalities). The live site was unavailable when we checked; see the [archived copy](http://web.archive.org/web/20231029013544/https://oqp.iqoqi.oeaw.ac.at/the-power-of-cglmp-inequalities).
 
 Every result stated as proved rests on exact data. Numbers are elements of Q(ζ₄d) or Q, positivity is certified by exact LDLᵀ pivots, and the KL bounds use interval arithmetic. The checkers use no floating-point solver, and they are independent of the programs that built the certificates. Results that are only numerical are labelled as such.
 
@@ -48,6 +48,7 @@ On Φ_d, explicit competitor strategies give certified statistical strength (KL 
 - **Certification:** exact rational certificates plus interval arithmetic, in `kl_and_noise/`, log `kl_and_noise/FINAL_certificates.log`.
 - **Example:** at d = 4 the competitor exceeds DKZ by at least 0.0255 bits.
 - **d = 3:** our numerics agree that DKZ is KL-optimal.
+- **Prior work:** a d = 4 counterexample was found independently, and published earlier, by Y. Zhang, *CGLMP measurements need not maximize statistical strength* (Zenodo, 28 September 2026, [doi:10.5281/zenodo.23022433](https://doi.org/10.5281/zenodo.23022433)), with a separation above 0.022 bits. Our d = 4 certificate is a second, independent one. As far as we found, the counterexamples for d = 5..9 are new.
 
 ### 5. Noise robustness
 
@@ -71,7 +72,7 @@ The problem statement asks for more than is proved here:
 | DKZ optimal on maximally entangled states | proved for d = 3..12 (projective measurements); open for general d |
 | DKZ unique (rigidity) | proved for d = 3..12; algebraic part proved for all d |
 | Tsirelson bound, all states | exact for d = 3..8 |
-| KL optimality of DKZ | **false** for d = 4..9 |
+| KL optimality of DKZ | **false** for d = 4..9 (d = 4 first shown by Y. Zhang, 2026) |
 | Noise robustness against all Bell inequalities | proved for d = 3; numerical for d = 4, 5 |
 
 Part 27A (whether all facets of the (2,2,d) local polytope are CGLMP-type) was already answered negatively by Bancal, Gisin and Pironio (J. Phys. A 43, 385303 (2010)). The literature check is `kl_and_noise/LITERATURE_AUDIT.md`.
