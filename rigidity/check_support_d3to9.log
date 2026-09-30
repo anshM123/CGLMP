@@ -1,0 +1,78 @@
+﻿d=3: (S0) lam = S(DKZ) exactly (= 1.127065948827664); R_g^d = 1
+d=3: (S1) all 12 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.0019645737235799549594, 0.0019645737235799549594]) [0.1s]
+d=3: 22 support polynomials from 4 charge-0 blocks
+d=3: (S4) all support polynomials and all 10 targets vanish exactly on DKZ
+d=3: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=3: (S2) chain modes M_(n,t), n=1..2, t=1,2,3 in support span: True
+d=3: (S3) symmetrised two-eigenvalue elements T_n, n=1..2 in support span: True
+d=3: (S3') first-link elements V_n, n=1..2 in support span: True
+d=3: negative controls (6 perturbed polynomials) all rejected: True
+d=3: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 2) [0.1s]
+d=3: (P1) |G| = 48; S_op G-invariant mod commutators; identity S_op - lam = SOS: 23 symmetry classes touched (0 further cyclic words forced to 0), 3 with nonzero net coefficient, 4145 expanded terms: OK [0.1s]
+d=4: (S0) lam = S(DKZ) exactly (= 1.655635172311938); R_g^d = 1
+d=4: (S1) all 16 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.0007592978348042154471, 0.0007592978348042154471]) [0.1s]
+d=4: 33 support polynomials from 4 charge-0 blocks
+d=4: (S4) all support polynomials and all 15 targets vanish exactly on DKZ
+d=4: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=4: (S2) chain modes M_(n,t), n=1..3, t=1,2,3 in support span: True
+d=4: (S3) symmetrised two-eigenvalue elements T_n, n=1..3 in support span: True
+d=4: (S3') first-link elements V_n, n=1..3 in support span: True
+d=4: negative controls (9 perturbed polynomials) all rejected: True
+d=4: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 3) [0.5s]
+d=4: (P1) |G| = 64; S_op G-invariant mod commutators; identity S_op - lam = SOS: 59 symmetry classes touched (28 further cyclic words forced to 0), 4 with nonzero net coefficient, 14089 expanded terms: OK [0.7s]
+d=5: (S0) lam = S(DKZ) exactly (= 2.178910383855845); R_g^d = 1
+d=5: (S1) all 20 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.0007247206729944213516, 0.0007247206729944213516]) [0.3s]
+d=5: 44 support polynomials from 4 charge-0 blocks
+d=5: (S4) all support polynomials and all 20 targets vanish exactly on DKZ
+d=5: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=5: (S2) chain modes M_(n,t), n=1..4, t=1,2,3 in support span: True
+d=5: (S3) symmetrised two-eigenvalue elements T_n, n=1..4 in support span: True
+d=5: (S3') first-link elements V_n, n=1..4 in support span: True
+d=5: negative controls (12 perturbed polynomials) all rejected: True
+d=5: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 3) [1.0s]
+d=5: (P1) |G| = 80; S_op G-invariant mod commutators; identity S_op - lam = SOS: 122 symmetry classes touched (0 further cyclic words forced to 0), 5 with nonzero net coefficient, 33889 expanded terms: OK [1.4s]
+d=6: (S0) lam = S(DKZ) exactly (= 2.699490984052340); R_g^d = 1
+d=6: (S1) all 24 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.00015527190175288082373, 0.00015527190175288082373]) [2.6s]
+d=6: 55 support polynomials from 4 charge-0 blocks
+d=6: (S4) all support polynomials and all 25 targets vanish exactly on DKZ
+d=6: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=6: (S2) chain modes M_(n,t), n=1..5, t=1,2,3 in support span: True
+d=6: (S3) symmetrised two-eigenvalue elements T_n, n=1..5 in support span: True
+d=6: (S3') first-link elements V_n, n=1..5 in support span: True
+d=6: negative controls (15 perturbed polynomials) all rejected: True
+d=6: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 4) [3.8s]
+d=6: (P1) |G| = 96; S_op G-invariant mod commutators; identity S_op - lam = SOS: 220 symmetry classes touched (52 further cyclic words forced to 0), 6 with nonzero net coefficient, 67001 expanded terms: OK [8.2s]
+d=7: (S0) lam = S(DKZ) exactly (= 3.218517172726370); R_g^d = 1
+d=7: (S1) all 28 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.00024601370165740586222, 0.00024601370165740586222]) [0.8s]
+d=7: 42 support polynomials from 4 charge-0 blocks
+d=7: (S4) all support polynomials and all 30 targets vanish exactly on DKZ
+d=7: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=7: (S2) chain modes M_(n,t), n=1..6, t=1,2,3 in support span: True
+d=7: (S3) symmetrised two-eigenvalue elements T_n, n=1..6 in support span: True
+d=7: (S3') first-link elements V_n, n=1..6 in support span: True
+d=7: negative controls (18 perturbed polynomials) all rejected: True
+d=7: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 4) [2.0s]
+d=7: (P1) |G| = 112; S_op G-invariant mod commutators; identity S_op - lam = SOS: 229 symmetry classes touched (0 further cyclic words forced to 0), 7 with nonzero net coefficient, 55777 expanded terms: OK [5.0s]
+d=8: (S0) lam = S(DKZ) exactly (= 3.736566369534392); R_g^d = 1
+d=8: (S1) all 32 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.00014143798702357002762, 0.00014143798702357002762]) [1.3s]
+d=8: 49 support polynomials from 4 charge-0 blocks
+d=8: (S4) all support polynomials and all 35 targets vanish exactly on DKZ
+d=8: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=8: (S2) chain modes M_(n,t), n=1..7, t=1,2,3 in support span: True
+d=8: (S3) symmetrised two-eigenvalue elements T_n, n=1..7 in support span: True
+d=8: (S3') first-link elements V_n, n=1..7 in support span: True
+d=8: negative controls (21 perturbed polynomials) all rejected: True
+d=8: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 5) [4.4s]
+d=8: (P1) |G| = 128; S_op G-invariant mod commutators; identity S_op - lam = SOS: 344 symmetry classes touched (64 further cyclic words forced to 0), 8 with nonzero net coefficient, 88369 expanded terms: OK [6.4s]
+d=9: (S0) lam = S(DKZ) exactly (= 4.253961873274289); R_g^d = 1
+d=9: (S1) all 36 kept Gram matrices Y_b Hermitian positive definite (interval Cholesky, min pivot lower bound [0.000040703095870323063443, 0.000040703095870323063443]) [2.7s]
+d=9: 56 support polynomials from 4 charge-0 blocks
+d=9: (S4) all support polynomials and all 40 targets vanish exactly on DKZ
+d=9: (S5) W0^* R_k^DKZ W0 = canonical R_k (k=1..4) exactly; canonical R_k^d = 1
+d=9: (S2) chain modes M_(n,t), n=1..8, t=1,2,3 in support span: True
+d=9: (S3) symmetrised two-eigenvalue elements T_n, n=1..8 in support span: True
+d=9: (S3') first-link elements V_n, n=1..8 in support span: True
+d=9: negative controls (24 perturbed polynomials) all rejected: True
+d=9: SUPPORT CONDITIONS VERIFIED (all n <= d-1; rigidity needs n <= floor(d/2)+1 = 5) [5.1s]
+d=9: (P1) |G| = 144; S_op G-invariant mod commutators; identity S_op - lam = SOS: 497 symmetry classes touched (0 further cyclic words forced to 0), 9 with nonzero net coefficient, 131713 expanded terms: OK [13.9s]
+ALL DONE

@@ -1,0 +1,22 @@
+== CGLMPRigidity/Rigidity.lean
+== CGLMPRigidity/Links.lean
+== CGLMPRigidity/Model.lean
+== CGLMPRigidity/Bridge.lean
+== CGLMPRigidity/Axioms.lean
+'CGLMPRigidity.jordan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.exists_proj_of_two_valued' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.orth_upto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.orth_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.mu_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.dvd_of_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.eq_of_modes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.two_valued_iff_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.V_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.rigidity_of_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.canonical_model' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.grade_sharp_core' depends on axioms: [propext, Classical.choice, Quot.sound]
+== forbidden keywords (sorry/admit/axiom/native_decide):
+none
+exit 0
+elapsed 166 s

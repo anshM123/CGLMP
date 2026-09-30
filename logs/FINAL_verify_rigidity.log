@@ -1,0 +1,22 @@
+d=3: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [6, 6, 6])
+d=3: (b) all two-eigenvalue relations T_1..T_2 lie in the SOS support of block (0,0)
+d=3: RIGIDITY support conditions verified
+d=4: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [9, 9, 9])
+d=4: (b) all two-eigenvalue relations T_1..T_3 lie in the SOS support of block (0,0)
+d=4: RIGIDITY support conditions verified
+d=5: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [12, 12, 12])
+d=5: (b) all two-eigenvalue relations T_1..T_4 lie in the SOS support of block (0,0)
+d=5: RIGIDITY support conditions verified
+d=6: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [15, 15, 15])
+d=6: (b) all two-eigenvalue relations T_1..T_5 lie in the SOS support of block (0,0)
+d=6: RIGIDITY support conditions verified
+d=7: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [12, 12, 12])
+d=7: (b) all two-eigenvalue relations T_1..T_6 lie in the SOS support of block (0,0)
+d=7: RIGIDITY support conditions verified
+d=8: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [14, 14, 14])
+d=8: (b) all two-eigenvalue relations T_1..T_7 lie in the SOS support of block (0,0)
+d=8: RIGIDITY support conditions verified
+d=9: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [16, 16, 16])
+d=9: (b) all two-eigenvalue relations T_1..T_8 lie in the SOS support of block (0,0)
+d=9: RIGIDITY support conditions verified
+ALLDONE

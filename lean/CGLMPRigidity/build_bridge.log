@@ -1,0 +1,18 @@
+﻿waited 0s; available MB at start: 10162
+CGLMPRigidity/Bridge.lean:28:15: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [star_add, star_smul, mul_add, add_mul, smul_mul_assoc, mul_smul_comm, smul_add, smul_smul, ha',
+    one_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+CGLMPRigidity/Bridge.lean:36:15: warning: This simp argument is unused:
+  ha
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [star_add, star_smul, mul_add, add_mul, smul_mul_assoc, mul_smul_comm, smul_add, smul_smul, ha',
+    one_smul]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+exit code: 0; elapsed s: 33.8

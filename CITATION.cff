@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the preprint below."
+title: "CGLMP on maximally entangled states: exact optimality, rigidity and Tsirelson bounds"
+type: software
+authors:
+  - family-names: Mishra
+    given-names: Ansh
+  - family-names: Senthilkumar
+    given-names: Aryan
+version: "1.0"
+date-released: "2026-09-30"
+license: MIT
+repository-code: "https://github.com/anshM123/CGLMP"
+keywords:
+  - "Bell inequalities"
+  - "CGLMP inequality"
+  - "maximally entangled states"
+  - "self-testing"
+  - "sum-of-squares certificates"
+  - "Lean 4"
+preferred-citation:
+  type: article
+  status: preprint
+  title: "CGLMP on maximally entangled states: exact optimality, rigidity and Tsirelson bounds"
+  authors:
+    - family-names: Mishra
+      given-names: Ansh
+    - family-names: Senthilkumar
+      given-names: Aryan
+  year: 2026
+  month: 9
+  url: "https://github.com/anshM123/CGLMP"

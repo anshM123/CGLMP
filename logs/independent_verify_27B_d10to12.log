@@ -1,0 +1,27 @@
+=== d=10 sha256 a5ae0140f7cf2df86366f6a65e860779942b70dcaa112c438d17d1f53b459069
+d=10: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=10: identity check over 640 symmetry classes (121913 expanded terms): OK
+d=10: all 26 Gram blocks positive definite (min certified pivot > [0.0005893071048702613091778157146139744732833960290748349959599619762, 0.0005893071048702613091778157146139744732833960290748349959599619762])
+d=10: lam = S_DKZ exactly;  Pi_ME = 0.577089865932514731735417456119 ;  I_ME = 2.93980029792774504058796120863
+d=10: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+EXIT=0 (1940 s)
+d=10: (b) all two-eigenvalue relations T_1..T_9 lie in the SOS support of block (0,0)
+d=10: RIGIDITY support conditions verified
+=== d=11 sha256 a2081452504c5834488f9179f1631bc3c59c6ceeb0f4dabea142bdfd084b57f6
+d=11: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=11: identity check over 803 symmetry classes (152049 expanded terms): OK
+d=11: all 28 Gram blocks positive definite (min certified pivot > [0.0002763138600665449844590388625610182888468982485553243175075818877, 0.0002763138600665449844590388625610182888468982485553243175075818877])
+d=11: lam = S_DKZ exactly;  Pi_ME = 0.571591022206019948183643183119 ;  I_ME = 2.94249975114675611399598499714
+d=11: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+EXIT=0 (11502 s)
+d=11: (b) all two-eigenvalue relations T_1..T_10 lie in the SOS support of block (0,0)
+d=11: RIGIDITY support conditions verified
+=== d=12 sha256 dfb10c1e6b6daa41953118513aa8fac67b14f5e4ed872f7959e55d896d533531
+d=12: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=12: identity check over 1359 symmetry classes (308457 expanded terms): OK
+d=12: all 34 Gram blocks positive definite (min certified pivot > [0.0003049767706211907660764705394218198527691018523422566821492144508, 0.0003049767706211907660764705394218198527691018523422566821492144508])
+d=12: lam = S_DKZ exactly;  Pi_ME = 0.566987737693158445538564521391 ;  I_ME = 2.94475402685129066427949558969
+d=12: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+EXIT=0 (10001 s)
+d=12: (b) all two-eigenvalue relations T_1..T_11 lie in the SOS support of block (0,0)
+d=12: RIGIDITY support conditions verified

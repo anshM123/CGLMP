@@ -1,0 +1,36 @@
+d=3: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 3.91485421551267621995020382274
+d=3: S_op invariant under reversal, rho, sigma
+d=3: identity over 9 symmetry classes (785 expanded terms): OK
+d=3: all Gram blocks positive definite (min certified pivot > 0.0013713)
+d=3: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=3: VERIFIED Tsirelson bound: Pi* = 0.69504859482910792668326539242 ; I_d* = 2.91485421551267621995020382274
+d=4: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 5.45904740065336574570474864215
+d=4: S_op invariant under reversal, rho, sigma
+d=4: identity over 18 symmetry classes (2329 expanded terms): OK
+d=4: all Gram blocks positive definite (min certified pivot > 0.0010044)
+d=4: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=4: VERIFIED Tsirelson bound: Pi* = 0.635238149836658563573812839463 ; I_d* = 2.9726982671022438304698324281
+d=5: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 7.03142095104534657104796760392
+d=5: S_op invariant under reversal, rho, sigma
+d=5: identity over 35 symmetry classes (5153 expanded terms): OK
+d=5: all Gram blocks positive definite (min certified pivot > 9.7274e-6)
+d=5: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=5: VERIFIED Tsirelson bound: Pi* = 0.593715809790930685790406479216 ; I_d* = 3.01571047552267328552398380196
+d=6: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 8.62425104810212055586574028477
+d=6: S_op invariant under reversal, rho, sigma
+d=6: identity over 57 symmetry classes (9641 expanded terms): OK
+d=6: all Gram blocks positive definite (min certified pivot > 1.6077e-5)
+d=6: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=6: VERIFIED Tsirelson bound: Pi* = 0.562624825316313240689043285872 ; I_d* = 3.04970041924084822234629611391
+d=7: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 10.232944934302772884021631682
+d=7: S_op invariant under reversal, rho, sigma
+d=7: identity over 91 symmetry classes (16177 expanded terms): OK
+d=7: all Gram blocks positive definite (min certified pivot > 1.1196e-8)
+d=7: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=7: VERIFIED Tsirelson bound: Pi* = 0.538150723671032445139766902574 ; I_d* = 3.07764831143425762800721056066
+d=8: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 11.854482057669139983992623497
+d=8: S_op invariant under reversal, rho, sigma
+d=8: identity over 132 symmetry classes (25145 expanded terms): OK
+d=8: all Gram blocks positive definite (min certified pivot > 7.1147e-8)
+d=8: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=8: VERIFIED Tsirelson bound: Pi* = 0.518189742791357502000922062877 ; I_d* = 3.10128058790546856685503528485

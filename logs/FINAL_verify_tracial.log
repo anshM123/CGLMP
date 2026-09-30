@@ -1,0 +1,35 @@
+d=3: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=3: identity check over 23 symmetry classes (4145 expanded terms): OK
+d=3: all 12 Gram blocks positive definite (min certified pivot > [0.001964573723579954959432051075209344987112379219762766153506036713, 0.001964573723579954959432051075209344987112379219762766153506036713])
+d=3: lam = S_DKZ exactly;  Pi_ME = 0.709021982942554875991867750665 ;  I_ME = 2.87293405117233537202439674801
+d=3: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=4: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=4: identity check over 59 symmetry classes (14089 expanded terms): OK
+d=4: all 16 Gram blocks positive definite (min certified pivot > [0.0007592978348042154471001818583291652067007267920114327261935523206, 0.0007592978348042154471001818583291652067007267920114327261935523206])
+d=4: lam = S_DKZ exactly;  Pi_ME = 0.663908793077984367535624621566 ;  I_ME = 2.89624321845870835323833434249
+d=4: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=5: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=5: identity check over 122 symmetry classes (33889 expanded terms): OK
+d=5: all 20 Gram blocks positive definite (min certified pivot > [0.0009659030930330659485092693676943154448456705570263353000297992063, 0.0009659030930330659485092693676943154448456705570263353000297992063])
+d=5: lam = S_DKZ exactly;  Pi_ME = 0.635782076771169010994543252643 ;  I_ME = 2.91054480807207747251364186839
+d=5: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=6: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=6: identity check over 220 symmetry classes (67001 expanded terms): OK
+d=6: all 24 Gram blocks positive definite (min certified pivot > [0.0001811269388522476039622830639389855821389253886351800627245409926, 0.0001811269388522476039622830639389855821389253886351800627245409926])
+d=6: lam = S_DKZ exactly;  Pi_ME = 0.616581830675390019085821890664 ;  I_ME = 2.92020360637906395419402746241
+d=6: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=7: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=7: identity check over 229 symmetry classes (55777 expanded terms): OK
+d=7: all 28 Gram blocks positive definite (min certified pivot > [0.0003475643717838157102975504522886269343022105600147027026084441562, 0.0003475643717838157102975504522886269343022105600147027026084441562])
+d=7: lam = S_DKZ exactly;  Pi_ME = 0.602645310389481535445359320245 ;  I_ME = 2.92716094242454308396082825276
+d=7: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=8: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=8: identity check over 344 symmetry classes (88369 expanded terms): OK
+d=8: all 32 Gram blocks positive definite (min certified pivot > [0.0002133483206681492582223928698706197030686254694080618965445210405, 0.0002133483206681492582223928698706197030686254694080618965445210405])
+d=8: lam = S_DKZ exactly;  Pi_ME = 0.592070796191798816391324644129 ;  I_ME = 2.93240960870445984824840081342
+d=8: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=9: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=9: identity check over 497 symmetry classes (131713 expanded terms): OK
+d=9: all 36 Gram blocks positive definite (min certified pivot > [0.00005868422115487670580752125709416834562629870371584342469072592636, 0.00005868422115487670580752125709416834562629870371584342469072592636])
+d=9: lam = S_DKZ exactly;  Pi_ME = 0.583773541474920879369788684427 ;  I_ME = 2.93650953168142802141797546004
+d=9: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME

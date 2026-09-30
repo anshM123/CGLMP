@@ -1,0 +1,96 @@
+# independent re-check re-verification of OQP 27B certificates, 2026-09-29 07:59:46
+d=3: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=3: identity check over 23 symmetry classes (4145 expanded terms): OK
+d=3: all 12 Gram blocks positive definite (min certified pivot > [0.001964573723579954959432051075209344987112379219762766153506036713, 0.001964573723579954959432051075209344987112379219762766153506036713])
+d=3: lam = S_DKZ exactly;  Pi_ME = 0.709021982942554875991867750665 ;  I_ME = 2.87293405117233537202439674801
+d=3: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=4: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=4: identity check over 59 symmetry classes (14089 expanded terms): OK
+d=4: all 16 Gram blocks positive definite (min certified pivot > [0.0007592978348042154471001818583291652067007267920114327261935523206, 0.0007592978348042154471001818583291652067007267920114327261935523206])
+d=4: lam = S_DKZ exactly;  Pi_ME = 0.663908793077984367535624621566 ;  I_ME = 2.89624321845870835323833434249
+d=4: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=5: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=5: identity check over 122 symmetry classes (33889 expanded terms): OK
+d=5: all 20 Gram blocks positive definite (min certified pivot > [0.0009659030930330659485092693676943154448456705570263353000297992063, 0.0009659030930330659485092693676943154448456705570263353000297992063])
+d=5: lam = S_DKZ exactly;  Pi_ME = 0.635782076771169010994543252643 ;  I_ME = 2.91054480807207747251364186839
+d=5: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=6: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=6: identity check over 220 symmetry classes (67001 expanded terms): OK
+d=6: all 24 Gram blocks positive definite (min certified pivot > [0.0001811269388522476039622830639389855821389253886351800627245409926, 0.0001811269388522476039622830639389855821389253886351800627245409926])
+d=6: lam = S_DKZ exactly;  Pi_ME = 0.616581830675390019085821890664 ;  I_ME = 2.92020360637906395419402746241
+d=6: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=7: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=7: identity check over 229 symmetry classes (55777 expanded terms): OK
+d=7: all 28 Gram blocks positive definite (min certified pivot > [0.0003475643717838157102975504522886269343022105600147027026084441562, 0.0003475643717838157102975504522886269343022105600147027026084441562])
+d=7: lam = S_DKZ exactly;  Pi_ME = 0.602645310389481535445359320245 ;  I_ME = 2.92716094242454308396082825276
+d=7: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=8: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=8: identity check over 344 symmetry classes (88369 expanded terms): OK
+d=8: all 32 Gram blocks positive definite (min certified pivot > [0.0002133483206681492582223928698706197030686254694080618965445210405, 0.0002133483206681492582223928698706197030686254694080618965445210405])
+d=8: lam = S_DKZ exactly;  Pi_ME = 0.592070796191798816391324644129 ;  I_ME = 2.93240960870445984824840081342
+d=8: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+d=9: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=9: identity check over 497 symmetry classes (131713 expanded terms): OK
+d=9: all 36 Gram blocks positive definite (min certified pivot > [0.00005868422115487670580752125709416834562629870371584342469072592636, 0.00005868422115487670580752125709416834562629870371584342469072592636])
+d=9: lam = S_DKZ exactly;  Pi_ME = 0.583773541474920879369788684427 ;  I_ME = 2.93650953168142802141797546004
+d=9: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+TRACIAL_EXIT=0 (705 s)
+d=3: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [6, 6, 6])
+d=3: (b) all two-eigenvalue relations T_1..T_2 lie in the SOS support of block (0,0)
+d=3: RIGIDITY support conditions verified
+d=4: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [9, 9, 9])
+d=4: (b) all two-eigenvalue relations T_1..T_3 lie in the SOS support of block (0,0)
+d=4: RIGIDITY support conditions verified
+d=5: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [12, 12, 12])
+d=5: (b) all two-eigenvalue relations T_1..T_4 lie in the SOS support of block (0,0)
+d=5: RIGIDITY support conditions verified
+d=6: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [15, 15, 15])
+d=6: (b) all two-eigenvalue relations T_1..T_5 lie in the SOS support of block (0,0)
+d=6: RIGIDITY support conditions verified
+d=7: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [12, 12, 12])
+d=7: (b) all two-eigenvalue relations T_1..T_6 lie in the SOS support of block (0,0)
+d=7: RIGIDITY support conditions verified
+d=8: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [14, 14, 14])
+d=8: (b) all two-eigenvalue relations T_1..T_7 lie in the SOS support of block (0,0)
+d=8: RIGIDITY support conditions verified
+d=9: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [16, 16, 16])
+d=9: (b) all two-eigenvalue relations T_1..T_8 lie in the SOS support of block (0,0)
+d=9: RIGIDITY support conditions verified
+RIGIDITY_EXIT=0 (1 s)
+d=3: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 3.91485421551267621995020382274
+d=3: S_op invariant under reversal, rho, sigma
+d=3: identity over 9 symmetry classes (785 expanded terms): OK
+d=3: all Gram blocks positive definite (min certified pivot > 0.0013713)
+d=3: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=3: VERIFIED Tsirelson bound: Pi* = 0.69504859482910792668326539242 ; I_d* = 2.91485421551267621995020382274
+d=4: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 5.45904740065336574570474864215
+d=4: S_op invariant under reversal, rho, sigma
+d=4: identity over 18 symmetry classes (2329 expanded terms): OK
+d=4: all Gram blocks positive definite (min certified pivot > 0.0010044)
+d=4: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=4: VERIFIED Tsirelson bound: Pi* = 0.635238149836658563573812839463 ; I_d* = 2.9726982671022438304698324281
+d=5: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 7.03142095104534657104796760392
+d=5: S_op invariant under reversal, rho, sigma
+d=5: identity over 35 symmetry classes (5153 expanded terms): OK
+d=5: all Gram blocks positive definite (min certified pivot > 9.7274e-6)
+d=5: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=5: VERIFIED Tsirelson bound: Pi* = 0.593715809790930685790406479216 ; I_d* = 3.01571047552267328552398380196
+d=6: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 8.62425104810212055586574028477
+d=6: S_op invariant under reversal, rho, sigma
+d=6: identity over 57 symmetry classes (9641 expanded terms): OK
+d=6: all Gram blocks positive definite (min certified pivot > 1.6077e-5)
+d=6: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=6: VERIFIED Tsirelson bound: Pi* = 0.562624825316313240689043285872 ; I_d* = 3.04970041924084822234629611391
+d=7: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 10.232944934302772884021631682
+d=7: S_op invariant under reversal, rho, sigma
+d=7: identity over 91 symmetry classes (16177 expanded terms): OK
+d=7: all Gram blocks positive definite (min certified pivot > 1.1196e-8)
+d=7: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=7: VERIFIED Tsirelson bound: Pi* = 0.538150723671032445139766902574 ; I_d* = 3.07764831143425762800721056066
+d=8: t = lambda* certified in an interval of width 2e-70 around lambda_max(K_d) = 11.854482057669139983992623497
+d=8: S_op invariant under reversal, rho, sigma
+d=8: identity over 132 symmetry classes (25145 expanded terms): OK
+d=8: all Gram blocks positive definite (min certified pivot > 7.1147e-8)
+d=8: attainment verified (restricted DKZ Bell operator = (2d-1)1 - K_d)
+d=8: VERIFIED Tsirelson bound: Pi* = 0.518189742791357502000922062877 ; I_d* = 3.10128058790546856685503528485
+BIP_EXIT=0 (2128 s)

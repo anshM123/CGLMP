@@ -1,0 +1,46 @@
+=== kl_certificate.py
+Certified KL statistical strengths on |Phi_d> (uniform settings), bits
+  DKZ (d=3): certified KL <= 0.057783025493 bits   (numerical value 0.057783025493)
+  DKZ (d=4): certified KL <= 0.062379759579 bits   (numerical value 0.062379759579)
+  DKZ (d=5): certified KL <= 0.064642147134 bits   (numerical value 0.064642147134)
+  DKZ (d=6): certified KL <= 0.065892323568 bits   (numerical value 0.065892323568)
+  DKZ (d=7): certified KL <= 0.066645818482 bits   (numerical value 0.066645818482)
+  competitor (d=4): certified KL >= 0.087900462237 bits   (numerical value 0.087900463680; test-factor normaliser 1.000000000000)
+  d=4: COMPETITOR STRICTLY BETTER (rigorous): lower(competitor) - upper(DKZ) >= 0.025521 bits
+  competitor (d=5): certified KL >= 0.094836406381 bits   (numerical value 0.094836407824; test-factor normaliser 1.000000000000)
+  d=5: COMPETITOR STRICTLY BETTER (rigorous): lower(competitor) - upper(DKZ) >= 0.030194 bits
+  competitor (d=6): certified KL >= 0.097994501381 bits   (numerical value 0.097994502824; test-factor normaliser 1.000000000000)
+  d=6: COMPETITOR STRICTLY BETTER (rigorous): lower(competitor) - upper(DKZ) >= 0.032102 bits
+  competitor (d=7): certified KL >= 0.091288911409 bits   (numerical value 0.091288912851; test-factor normaliser 1.000000000000)
+  d=7: COMPETITOR STRICTLY BETTER (rigorous): lower(competitor) - upper(DKZ) >= 0.024643 bits
+EXIT=0 (3 s)
+=== kl_certificate2.py fgrad_kl_d8_s3.npy fgrad_kl_d9_s3.npy fstate_d4_s5.npy fstate_d6_s7.npy fstate_d7_s7.npy fstate_d8_s5.npy
+fgrad_kl_d8_s3.npy: d=8, state max-ent: certified KL >= 0.096930697493 bits  (numerical 0.096930698936)
+fgrad_kl_d9_s3.npy: d=9, state max-ent: certified KL >= 0.087358772637 bits  (numerical 0.087358774079)
+fstate_d4_s5.npy: d=4, state Schmidt-diagonal: certified KL >= 0.097713803624 bits  (numerical 0.097713805067)
+fstate_d6_s7.npy: d=6, state Schmidt-diagonal: certified KL >= 0.126430808124 bits  (numerical 0.126430809567)
+fstate_d7_s7.npy: d=7, state Schmidt-diagonal: certified KL >= 0.134367762035 bits  (numerical 0.134367763478)
+fstate_d8_s5.npy: d=8, state Schmidt-diagonal: certified KL >= 0.145326423048 bits  (numerical 0.145326424490)
+EXIT=0 (2 s)
+=== kl_cert_chsh2.py
+CHSH (x) CHSH, shared settings, |Phi_4>: certified KL >= 0.087900462237 bits (numerical 0.087900463680; exact normaliser 1.000000000000005)
+EXIT=0 (1 s)
+=== full_check_r5.py
+R5 full check: max |q_numpy - q_exact| = 8.3e-17; exact normaliser over all 625 strategies = 1.000000000000367; certified KL >= 0.094836406381 bits (numerical 0.094836407824)
+EXIT=0 (0 s)
+=== sym_check.py
+d=2: max deviation  G1 1.1e-16  G2 1.1e-16  Z_d 1.1e-16  closed form 2.2e-16
+d=3: max deviation  G1 2.2e-16  G2 1.2e-16  Z_d 2.2e-16  closed form 2.2e-16
+d=4: max deviation  G1 1.4e-16  G2 8.3e-17  Z_d 1.1e-16  closed form 1.1e-16
+d=5: max deviation  G1 2.2e-16  G2 2.2e-16  Z_d 2.2e-16  closed form 2.2e-16
+d=6: max deviation  G1 9.7e-17  G2 1.4e-16  Z_d 1.4e-16  closed form 1.4e-16
+d=7: max deviation  G1 1.2e-16  G2 1.5e-16  Z_d 1.5e-16  closed form 2.1e-16
+d=8: max deviation  G1 1.1e-16  G2 1.1e-16  Z_d 1.8e-16  closed form 1.2e-16
+d=9: max deviation  G1 1.4e-16  G2 1.4e-16  Z_d 2.1e-16  closed form 1.7e-16
+EXIT=0 (1 s)
+  DKZ (d=8): certified KL <= 0.067136838882 bits   (numerical value 0.067136838882)
+  DKZ (d=9): certified KL <= 0.067474446492 bits   (numerical value 0.067474446492)
+  competitor (d=8): certified KL >= 0.096930697493 bits   (numerical value 0.096930698936; test-factor normaliser 1.000000000000)
+d=8: margin lower(competitor)-upper(DKZ) >= 0.029794 bits -> STRICTLY BETTER
+  competitor (d=9): certified KL >= 0.087358772637 bits   (numerical value 0.087358774079; test-factor normaliser 1.000000000000)
+d=9: margin lower(competitor)-upper(DKZ) >= 0.019884 bits -> STRICTLY BETTER

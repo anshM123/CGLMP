@@ -1,0 +1,13 @@
+﻿waited 0s; available MB at start: 10278
+'CGLMPRigidity.jordan' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.exists_proj_of_two_valued' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.orth_upto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.orth_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.mu_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.dvd_of_rigidity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.eq_of_modes' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.two_valued_iff_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.V_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'CGLMPRigidity.rigidity_of_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+exit code: 0; elapsed s: 29.6
