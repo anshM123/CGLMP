@@ -1,0 +1,10 @@
+# command: python cot_rearr.py 12,3,3 16,4,4 20,5,5 24,6,6 16,3,6 20,4,7
+# python 3.14.3 | numpy 2.4.6 | scipy 1.17.1 | mpmath 1.3.0
+identity F(S) = <S,S-d>/2 - d/2 verified on random transversals
+N=12 a=3 b=3: adjacent 11.618802  max over (A,B) 11.618802  diff +0.00e+00  argmax B=(0, 1, 2) A=[3, 4, 5]
+N=16 a=4 b=4: adjacent 21.377459  max over (A,B) 21.377459  diff +0.00e+00  argmax B=(0, 1, 2, 3) A=[4, 5, 6, 7]
+N=20 a=5 b=5: adjacent 34.105448  max over (A,B) 34.105448  diff -7.11e-15  argmax B=(0, 1, 2, 3, 4) A=[5, 6, 7, 8, 9]
+N=24 a=6 b=6: adjacent 49.803054  max over (A,B) 49.803054  diff +0.00e+00  argmax B=(0, 1, 2, 3, 4, 5) A=[6, 7, 8, 9, 10, 11]
+N=16 a=3 b=6: adjacent 20.990585  max over (A,B) 20.990585  diff +0.00e+00  argmax B=(0, 1, 2, 3, 4, 5) A=[6, 7, 8]
+N=20 a=4 b=7: adjacent 34.098278  max over (A,B) 34.098278  diff +7.11e-15  argmax B=(0, 1, 2, 3, 4, 5, 6) A=[7, 8, 9, 10]
+# wall time: 2 s

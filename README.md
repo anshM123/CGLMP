@@ -63,14 +63,28 @@ On Φ_d, explicit competitor strategies give certified statistical strength (KL 
 
 They also include local-optimality checks.
 
+### 7. Every d, commuting (equal-link) strategies: analytic proof
+
+Paper: [`paper-classical-all-d/main.pdf`](paper-classical-all-d/main.pdf), *A rearrangement inequality for the discrete Hilbert transform, with an application to optimal CGLMP measurements* (18 pages). The proofs are by hand, with no computer assistance.
+
+- **Theorem A (discrete Hilbert-transform rearrangement).** Let A and B be disjoint subsets of Z_N with |A| = a and |B| = b. Then Σ_{x∈A, y∈B} cot(π(x−y)/N) is largest when A and B are adjacent intervals, with B immediately before A. When a, b ≥ 1 and a + b < N, only rotations of that pair attain the maximum.
+  - The proof has three ingredients: an exact exchange identity; the circle version of Stein–Weiss/Laeng universality combined with the bathtub principle; and an explicit estimate of the junction terms.
+  - We have not found Theorem A, or an equivalent statement, in the literature.
+- **Theorem B (clock model, commutative sector, every d ≥ 2).** F(V) ≤ F_DKZ for pairwise commuting unitaries V_0..V_{d−1} with V_k^4 = 1. Equality holds exactly for the one-step configurations.
+- **Corollary C (physics).** Take any projective strategy on a maximally entangled state, of any local dimension, whose four link operators coincide. Its reduced family then commutes.
+  - It satisfies I_d ≤ I_ME(d).
+  - Equality holds if and only if the strategy is DKZ ⊗ 1, up to a local unitary u ⊗ ū.
+  - This covers, among others, all 4^d clock-phase strategies (Fourier bases dressed by diagonal phases) and their direct sums.
+- **Checks.** `paper-classical-all-d/scripts/` holds the numerical cross-checks (interval arithmetic for all constants), with outputs in `paper-classical-all-d/logs/`. They are not part of the proofs.
+
 ## Status
 
 The problem statement asks for more than is proved here:
 
 | Claim of OQP 27B | Status here |
 |---|---|
-| DKZ optimal on maximally entangled states | proved for d = 3..12 (projective measurements); open for general d |
-| DKZ unique (rigidity) | proved for d = 3..12; algebraic part proved for all d |
+| DKZ optimal on maximally entangled states | proved for d = 3..12 (projective measurements); proved for **every d** among equal-link (commuting) strategies (result 7); open in general for d ≥ 13 |
+| DKZ unique (rigidity) | proved for d = 3..12; for every d among equal-link strategies (result 7); algebraic part proved for all d |
 | Tsirelson bound, all states | exact for d = 3..8 |
 | KL optimality of DKZ | **false** for d = 4..9 (d = 4 first shown by Y. Zhang, 2026) |
 | Noise robustness against all Bell inequalities | proved for d = 3; numerical for d = 4, 5 |
@@ -90,6 +104,7 @@ Part 27A (whether all facets of the (2,2,d) local polytope are CGLMP-type) was a
 | `lean/` | Lean 4 formalisation of the algebraic core of rigidity |
 | `kl_and_noise/` | KL counterexample certificates, noise checks, literature audit |
 | `reductions/` | exact reductions and local-optimality checks toward all d |
+| `paper-classical-all-d/` | paper for result 7 (LaTeX source and PDF), numerical cross-check scripts and logs |
 | `research-log/` | dated working logs |
 | `logs/` | verification runs, including the independent re-checks |
 

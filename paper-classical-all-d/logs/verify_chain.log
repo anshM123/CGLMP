@@ -1,0 +1,9 @@
+# command: python verify_chain.py 24,6,6,500 40,10,10,500 48,12,12,300 80,20,20,100 30,4,11,500 50,7,19,300
+# python 3.14.3 | numpy 2.4.6 | scipy 1.17.1 | mpmath 1.3.0
+N=24 a=6 b=6: swap identity max err 4.1e-14; max(Qc-Qc_block)=+0.00e+00; max(E-E_block)/(N/pi)=+0.0000; max(Q-Q_block)=+7.105e-15
+N=40 a=10 b=10: swap identity max err 5.9e-14; max(Qc-Qc_block)=+0.00e+00; max(E-E_block)/(N/pi)=-0.3841; max(Q-Q_block)=-5.167e+00
+N=48 a=12 b=12: swap identity max err 7.5e-14; max(Qc-Qc_block)=-3.46e-02; max(E-E_block)/(N/pi)=-0.4418; max(Q-Q_block)=-6.785e+00
+N=80 a=20 b=20: swap identity max err 2.0e-13; max(Qc-Qc_block)=-1.15e+01; max(E-E_block)/(N/pi)=-2.1070; max(Q-Q_block)=-8.200e+01
+N=30 a=4 b=11: swap identity max err 3.5e-14; max(Qc-Qc_block)=+0.00e+00; max(E-E_block)/(N/pi)=+0.0000; max(Q-Q_block)=+0.000e+00
+N=50 a=7 b=19: swap identity max err 8.1e-14; max(Qc-Qc_block)=-6.87e-01; max(E-E_block)/(N/pi)=-0.4499; max(Q-Q_block)=-1.184e+01
+# wall time: 2 s

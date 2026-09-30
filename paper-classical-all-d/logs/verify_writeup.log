@@ -1,0 +1,16 @@
+# command: python verify_writeup.py 9
+# python 3.14.3 | numpy 2.4.6 | scipy 1.17.1 | mpmath 1.3.0
+(T) d=2: F_DKZ=1.4142135624  max F over all 4^d classical configs=1.4142135624  diff=+2.2e-16  #maximisers=8 (=4d=8: True), all windows: True; cotangent-representation identity err 4.4e-16
+(T) d=3: F_DKZ=4.3094010768  max F over all 4^d classical configs=4.3094010768  diff=+0.0e+00  #maximisers=12 (=4d=12: True), all windows: True; cotangent-representation identity err 4.4e-15
+(T) d=4: F_DKZ=8.6887296554  max F over all 4^d classical configs=8.6887296554  diff=+0.0e+00  #maximisers=16 (=4d=16: True), all windows: True; cotangent-representation identity err 8.9e-15
+(T) d=5: F_DKZ=14.5527240404  max F over all 4^d classical configs=14.5527240404  diff=+1.8e-15  #maximisers=20 (=4d=20: True), all windows: True; cotangent-representation identity err 1.1e-14
+(T) d=6: F_DKZ=21.9015270478  max F over all 4^d classical configs=21.9015270478  diff=+3.6e-15  #maximisers=24 (=4d=24: True), all windows: True; cotangent-representation identity err 7.8e-14
+(T) d=7: F_DKZ=30.7351898955  max F over all 4^d classical configs=30.7351898955  diff=+1.4e-14  #maximisers=28 (=4d=28: True), all windows: True; cotangent-representation identity err 6.4e-14
+(T) d=8: F_DKZ=41.0537345219  max F over all 4^d classical configs=41.0537345219  diff=+7.1e-15  #maximisers=32 (=4d=32: True), all windows: True; cotangent-representation identity err 5.7e-14
+(T) d=9: F_DKZ=52.8571715703  max F over all 4^d classical configs=52.8571715703  diff=+2.1e-14  #maximisers=36 (=4d=36: True), all windows: True; cotangent-representation identity err 5.3e-14
+N=8: cyclic symmetry err 2.2e-15; swap identity err 8.9e-16; Q=Qc+E and tent=2D-integral err 8.9e-16; e(m) partial-fraction formula err 2.9e-09
+N=12: cyclic symmetry err 1.5e-14; swap identity err 6.2e-15; Q=Qc+E and tent=2D-integral err 2.2e-15; e(m) partial-fraction formula err 1.2e-08
+N=20: cyclic symmetry err 5.0e-14; swap identity err 9.8e-15; Q=Qc+E and tent=2D-integral err 8.9e-15; e(m) partial-fraction formula err 1.9e-08
+N=33: cyclic symmetry err 3.5e-13; swap identity err 3.4e-14; Q=Qc+E and tent=2D-integral err 2.1e-14; e(m) partial-fraction formula err 1.9e-07
+N=40: cyclic symmetry err 3.2e-13; swap identity err 3.2e-14; Q=Qc+E and tent=2D-integral err 2.8e-14; e(m) partial-fraction formula err 1.7e-07
+# wall time: 2 s

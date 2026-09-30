@@ -1,0 +1,1097 @@
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{introthm}{Theorem}
+\renewcommand{\theintrothm}{\Alph{introthm}}
+\newtheorem{introcor}[introthm]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{question}[theorem]{Question}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\FD}{F_{\mathrm{DKZ}}}
+\newcommand{\IME}{I_{\mathrm{ME}}}
+\newcommand{\Qc}{Q_{\mathrm{c}}}
+\newcommand{\kb}{\bar\kappa}
+\newcommand{\sprod}{\mathrm{sc}}
+\newcommand{\fw}{\mathrm{fw}}
+\newcommand{\one}{\mathbf{1}}
+\setlength{\emergencystretch}{3em}
+
+\begin{document}
+
+\title[Discrete Hilbert transform rearrangement and CGLMP]{A rearrangement inequality for the discrete Hilbert
+transform, with an application to optimal CGLMP measurements}
+
+\author{Ansh Mishra}
+\author{Aryan Senthilkumar}
+
+\date{September 2026}
+
+\begin{abstract}
+For disjoint subsets $A,B$ of the cyclic group $\Z_N$ of prescribed sizes we show that the pairing
+$\sum_{x\in A,\,y\in B}\cot(\pi(x-y)/N)$, the bilinear form of the discrete Hilbert transform, is largest
+exactly when $A$ and $B$ are adjacent intervals with $B$ immediately before $A$. The proof has three
+ingredients: an exact exchange identity, which forces every maximiser to be cyclically ordered; a continuous
+version of the inequality, based on the circle analogue of a theorem of Stein and Weiss (the distribution of the
+conjugate function of an indicator function depends only on the measure of the set); and an explicit estimate of
+the discretisation error at the junctions between blocks, which excludes cyclically ordered configurations that
+wind around the circle more than once.
+
+We apply the inequality to Open Quantum Problem~27B of IQOQI Vienna, which asks to show that the measurements
+of Durt, Kaszlikowski and \.Zukowski (DKZ) are necessarily the optimal ones for the CGLMP$_d$ Bell inequality on
+maximally entangled states. The optimality statement is equivalent to an inequality for $d$-tuples of unitaries of
+order four (a $\Z_4$ clock model). We prove that inequality for every $d$ when the unitaries commute. In physical
+terms: among maximally entangled strategies whose four link operators coincide, the DKZ measurements are optimal
+and, up to local unitaries, unique, in every dimension $d$. The general (non-commuting) case remains open for
+$d\ge 13$; for $d\le 12$ it was settled earlier by exact computer-assisted certificates.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+\subsection{The problem}
+The CGLMP inequalities of Collins, Gisin, Linden, Massar and Popescu~\cite{CGLMP} are Bell inequalities for two
+parties with two measurement settings each and $d$ outcomes per measurement. Write $A_1,A_2$ and $B_1,B_2$ for
+the outcomes (elements of $\Z_d$) of Alice's and Bob's measurements. The CGLMP expression is
+\begin{multline}\label{eq:cglmp}
+I_d=\sum_{k=0}^{\lfloor d/2\rfloor-1}\Bigl(1-\frac{2k}{d-1}\Bigr)\Bigl(\bigl[P(A_1=B_1+k)+P(B_1=A_2+k+1)\\
++P(A_2=B_2+k)+P(B_2=A_1+k)\bigr]
+-\bigl[P(A_1=B_1-k-1)+P(B_1=A_2-k)\\
++P(A_2=B_2-k-1)+P(B_2=A_1-k-1)\bigr]\Bigr),
+\end{multline}
+where $P(A_x=B_y+k)$ is the probability that $A_x-B_y\equiv k\pmod d$ when the settings $x$ and $y$ are
+used.\footnote{This is the reading under which the local bound is derived in \cite[eqs.~(7)--(11)]{CGLMP} and
+under which the measurements of \cite[eqs.~(12)--(15)]{CGLMP} give the value \eqref{eq:IME}; see check (R7) in
+Section~\ref{sec:numerics}.} Local hidden variable models satisfy $I_d\le 2$~\cite{CGLMP}. On the maximally
+entangled state of two $d$-level systems, the measurements found numerically by Kaszlikowski et
+al.~\cite{KGZMZ} and described analytically by Durt, Kaszlikowski and \.Zukowski~\cite{DKZ}, namely diagonal
+phase shifts followed by a discrete Fourier transform, which we call the \emph{DKZ measurements}, give the value
+\begin{equation}\label{eq:IME}
+\IME(d)=\frac{4}{d(d-1)}\sum_{j=1}^{d-1}(d-j)\sec\frac{\pi j}{2d},
+\end{equation}
+for example $\IME(3)=2.8729\ldots$ and $\IME(4)=2.8962\ldots$. Numerical searches~\cite{KGZMZ,DKZ,CGLMP} found
+no better measurements on the maximally entangled state, while for $d\ge3$ the maximally entangled state is not
+the optimal state for $I_d$~\cite{ADGL}. Part~B of Open Quantum Problem~27 of the IQOQI Vienna list (``The power
+of CGLMP inequalities'', \cite{OQP}) records that the observables which numerically maximise the CGLMP violation on
+a maximally entangled state are measurements in the computational basis transformed by a discrete Fourier
+transform and diagonal unitaries, and asks to show that this is necessarily the case. It also asks to show that
+these measurements are optimal for noise resistance and for the Kullback--Leibler distance to local models; we do
+not address those two parts here.
+
+\subsection{What was known}
+For $d=2$ the CGLMP expression is the CHSH expression and the statement is Tsirelson's bound~\cite{Tsirelson}.
+For $d\ge 3$ the evidence was numerical~\cite{KGZMZ,DKZ,CGLMP}. For $d=3$, a semidefinite relaxation shows
+that the maximal value on maximally entangled states of any dimension agrees with the DKZ value to within
+$10^{-10}$~\cite{LVN} (this is the partial result listed in~\cite{OQP}). Ioannou and Rosset~\cite{IR} obtained
+sum-of-squares certificates for the maximal quantum value of $I_3$ and $I_4$ over all states; by~\cite{ADGL} this
+is a different optimisation problem from the one on maximally entangled states. In~\cite{repo} we gave exact
+sum-of-squares certificates, with cyclotomic coefficients and checked by independent exact verifiers, which prove
+that the DKZ measurements are optimal among projective measurements on maximally entangled states of any local
+dimension for $d=3,\dots,12$, together with a rigidity statement. The
+SATWAP expressions of Salavrakos et al.~\cite{SATWAP} are maximally violated by the maximally entangled state
+with measurements of CGLMP type, admit sum-of-squares decompositions for all $d$, and underlie self-testing
+results~\cite{KSTBSA,SSKA}; they are different Bell expressions and do not bear directly on $I_d$. Within the
+family of Fourier measurements with four linear phase offsets, the DKZ point was recently found numerically to be
+a strict local maximum for $d=2,\dots,6$~\cite[Sec.~V]{TMMD}. To our knowledge no argument valid for all $d$ was
+available, even within a restricted class of measurements.
+
+\subsection{The clock model and its commutative sector}
+The starting point of this paper is an exact reduction, stated as Theorem~\ref{thm:reduction} below and proved
+in Appendix~\ref{app:reduction} (it is also part of the material of~\cite{repo}). Put
+\[
+\psi_m=\frac{\pi m}{2d},\qquad h_m=\sec\psi_m-i\csc\psi_m\qquad(1\le m\le d-1),
+\]
+and for unitaries $V_0,\dots,V_{d-1}\in U(M)$ with $V_k^4=1$ let
+\begin{equation}\label{eq:F}
+F(V)=\sum_{0\le j<k\le d-1}\Re\bigl[h_{k-j}\,\tr(V_jV_k^*)\bigr],\qquad \tr=\tfrac1M\Tr .
+\end{equation}
+For every projective strategy on a maximally entangled state there is such a family with
+$I_d=4F(V)/(d(d-1))$, and conversely every such family comes from a strategy. The DKZ strategy corresponds to
+$V_0=\dots=V_{d-1}=1$, with
+\begin{equation}\label{eq:FDKZ}
+\FD=F(1,\dots,1)=\sum_{m=1}^{d-1}(d-m)\sec\psi_m,\qquad \IME(d)=\frac{4\FD}{d(d-1)} .
+\end{equation}
+So the optimality of the DKZ measurements on maximally entangled states (of any dimension, for projective
+measurements) is equivalent to the inequality $F(V)\le\FD$ for all $M$ and all $d$-tuples of unitaries of order
+dividing four.
+
+When the $V_k$ commute, every joint eigenvector $v$ carries a configuration $a\in\Z_4^d$ with
+$V_kv=i^{-a_k}v$, and $F(V)$ is an average of the values
+\begin{equation}\label{eq:Fa}
+F(a)=\sum_{0\le j<k\le d-1}\Re\bigl[h_{k-j}\,i^{a_k-a_j}\bigr],\qquad a\in\Z_4^d .
+\end{equation}
+This is a classical long-range four-state clock model on $d$ sites (equivalently, a long-range Ising ring with
+antiperiodic boundary conditions, Section~\ref{sec:discussion}). The corresponding Bell strategies are genuinely
+quantum: the DKZ strategy itself belongs to this commutative sector. We call $a$ \emph{one-step} if
+$a_k=c+[k\ge r]$ for some $c\in\Z_4$ and $r\in\{0,\dots,d-1\}$; there are $4d$ one-step configurations, and
+$a=0$ is one of them.
+
+\subsection{Results}
+For $N\ge2$ put $\kappa(u)=\cot(\pi u/N)$ for $u\in\Z_N\setminus\{0\}$ and $\kappa(0)=0$, and for $X,Y\subseteq\Z_N$
+\[
+\ip XY=\sum_{x\in X}\sum_{y\in Y}\kappa(x-y).
+\]
+For integers $p\le q$ let $[p,q)=\{p,p+1,\dots,q-1\}$, read modulo $N$. The function $\kappa$ is the kernel of the
+discrete (periodic) Hilbert transform on $\Z_N$, so $\ip XY$ is its bilinear form on indicator functions.
+
+\begin{introthm}[rearrangement inequality]\label{thm:A}
+Let $N\ge 2$ and let $A,B\subseteq\Z_N$ be disjoint, $|A|=a$, $|B|=b$. Then
+\[
+\ip AB\le \Phi_N(a,b):=\ip{[0,a)}{[-b,0)} .
+\]
+If $a,b\ge1$ and $a+b<N$, equality holds if and only if $(A,B)=(r+[0,a),\,r+[-b,0))$ for some $r\in\Z_N$.
+\end{introthm}
+
+In words: the pairing is largest when $A$ and $B$ are intervals and $B$ ends exactly where $A$ begins. If $a=0$,
+$b=0$ or $a+b=N$, both sides vanish (Section~\ref{sec:A}). The discrete Hilbert transform has mostly been studied
+through Hilbert-type inequalities and operator norms (see, e.g.,~\cite{MV,BK}); we have not found
+Theorem~\ref{thm:A}, or an equivalent statement, in the literature. Its continuous analogue
+(Proposition~\ref{prop:cont}) is a direct consequence of known results~\cite{SW,Laeng} and the bathtub principle,
+but the discrete statement does not follow from it (Remarks~\ref{rem:degenerate} and~\ref{rem:discrete}).
+
+\begin{introthm}[commutative sector, all $d$]\label{thm:B}
+Let $d\ge 2$ and let $V_0,\dots,V_{d-1}\in U(M)$ be pairwise commuting with $V_k^4=1$. Then $F(V)\le\FD$.
+Equality holds if and only if every joint eigenvector $v$ of the $V_k$ satisfies $V_kv=i^{-a_k}v$ with a
+one-step configuration $a$ (which may depend on $v$). The same holds for commuting unitaries of order dividing
+four in any von Neumann algebra with a faithful normal tracial state $\tau$ in place of $\tr$.
+\end{introthm}
+
+For the physical statement, encode Alice's projective measurements $\{P^x_a\}_{a\in\Z_d}$ and Bob's
+$\{Q^y_b\}_{b\in\Z_d}$ on $\C^D\otimes\C^D$ by the unitaries $U_x=\sum_aw^aP^x_a$ and $U'_y=\sum_bw^bQ^y_b$,
+$w=e^{2\pi i/d}$, and put
+\begin{equation}\label{eq:chainR}
+R_1=U_2,\quad R_2=(U'_2)^T,\quad R_3=U_1,\quad R_4=(U'_1)^T,
+\end{equation}
+where the transpose is taken in the Schmidt basis of the maximally entangled state
+$\Phi_D=D^{-1/2}\sum_{i=1}^D|ii\rangle$. The \emph{links} of the strategy are the following unitaries:
+\[
+L^{(0)}_n=R_1^nR_2^{-n},\quad L^{(1)}_n=R_2^nR_3^{-n},\quad L^{(2)}_n=R_3^nR_4^{-n},\quad
+L^{(3)}_n=w^{-n}R_4^nR_1^{-n}\qquad(1\le n\le d-1);
+\]
+their normalised traces are the Fourier coefficients of the distributions of the outcome differences along the
+chain $A_2,B_2,A_1,B_1$ (Section~\ref{sec:model}). We say that a strategy has \emph{equal links} if
+$L^{(0)}_n=L^{(1)}_n=L^{(2)}_n=L^{(3)}_n$ for every $n$.
+
+\begin{introcor}\label{cor:C}
+Let $d\ge2$. Every projective strategy on a maximally entangled state $\Phi_D$ (any $D$) with equal links
+satisfies $I_d\le\IME(d)$. Equality holds if and only if $d$ divides $D$ and, for some unitary
+$u\colon\C^D\to\C^d\otimes\C^{D/d}$, the local unitary $u\otimes\bar u$ maps the strategy to the DKZ strategy
+tensored with the identity on $\C^{D/d}$. In particular, each of the $4^d$ clock-phase strategies of
+Section~\ref{subsec:sector} satisfies $I_d\le\IME(d)$, with equality exactly for the $4d$ one-step ones.
+\end{introcor}
+
+The equal-link strategies are exactly those whose reduced family $V$ in Theorem~\ref{thm:reduction} commutes
+(Proposition~\ref{prop:links}). Theorem~\ref{thm:B} follows from Theorem~\ref{thm:A} through an exact identity
+(Lemma~\ref{lem:cot}): with $N=4d$ and $S_a=\{k-da_k:0\le k\le d-1\}\subseteq\Z_{4d}$,
+\[
+F(a)=\tfrac12\ip{S_a}{S_a-d}-\tfrac d2 ,
+\]
+and $S_a$ is an interval exactly when $a$ is one-step. So Theorem~\ref{thm:B} is the case $N=4d$, $a=b=d$ of
+Theorem~\ref{thm:A}.
+
+\subsection{Method and difficulty}
+The proof of Theorem~\ref{thm:A} (Section~\ref{sec:A}) has four steps. Let $C=\Z_N\setminus(A\cup B)$.
+(i)~The three pairings $\ip AB,\ip BC,\ip CA$ are equal, and exchanging the colours of an adjacent pair of type
+$(A,B)$, $(B,C)$ or $(C,A)$ increases the common value by an explicit positive amount. Hence every maximiser is
+cyclically ordered: going around the circle the colours run through $w\ge1$ rounds of blocks $C,B,A$. The
+configurations with $w=1$ are the rotations of $([0,a),[-b,0))$. (ii)~Smearing every point to a unit cell writes
+$\ip AB$ as a continuous pairing plus a sum of explicit junction terms. (iii)~The continuous pairing is maximised
+by adjacent arcs; this follows from the fact that the distribution of the conjugate function of the indicator
+of a finite union of arcs, on the complement of the set, depends only on the total length (a circle version of
+results of Stein and Weiss~\cite{SW} and Laeng~\cite{Laeng}, related to Boole's identity~\cite{Boole}), combined
+with the bathtub principle. (iv)~A configuration with $w$ rounds has exactly $w$ junctions $B|A$, each of which costs about
+$(2\log2-1)N/\pi$ in the junction terms; this beats all other junction contributions as soon as $w\ge2$.
+
+Step~(iv) cannot be avoided. The continuous problem in step~(iii) has many maximisers, including the $w$-fold
+covers of a pair of adjacent arcs (Remark~\ref{rem:degenerate}), so the discrete inequality is decided by the
+discretisation error, which is of order $N$. In the language of the clock model this is a near-degeneracy between
+the DKZ configuration and ``$w$-fold'' configurations (Section~\ref{sec:discussion}), and it suggests why
+certificates that are local in the site index fail for large $d$: for instance, the Sherali--Adams relaxation
+of the clock model built from all three-site marginals is exact for $d\le8$ but not for $9\le d\le12$
+(numerical; Section~\ref{sec:discussion}).
+
+\subsection{What remains open}
+Theorem~\ref{thm:B} covers commuting families. Whether $F(V)\le\FD$ holds for non-commuting families, which is
+what remains of the optimality statement of Problem~27B on maximally entangled states, is open for $d\ge13$. In
+Section~\ref{sec:discussion} we formulate an operator version of Theorem~\ref{thm:A} that would imply it. The
+cyclic symmetry extends to operators verbatim and the exchange identity only partially; we do not know operator
+versions of the continuous inequality and of the junction estimate.
+
+\subsection{Organisation}
+Section~\ref{sec:model} recalls the reduction to the clock model and characterises the commutative sector.
+Section~\ref{sec:cot} proves the cotangent representation and deduces Theorem~\ref{thm:B} and
+Corollary~\ref{cor:C} from Theorem~\ref{thm:A}. Section~\ref{sec:A} proves Theorem~\ref{thm:A}.
+Section~\ref{sec:numerics} lists numerical cross-checks, which are not part of the proofs, and
+Section~\ref{sec:discussion} discusses the non-commutative case. Appendix~\ref{app:reduction} contains the proof
+of the reduction.
+
+\section{The CGLMP expression and the clock model}\label{sec:model}
+
+Throughout, $d\ge2$, $w=e^{2\pi i/d}$, $z=e^{2\pi i/(4d)}$ (so $z^4=w$ and $z^d=i$), and $m(t)\in\{0,\dots,d-1\}$
+denotes the residue of an integer $t$ modulo $d$.
+
+\subsection{A chain form of the CGLMP expression}
+Relabel the settings as $X_1=A_2$, $Y_1=B_2$, $X_2=A_1$, $Y_2=B_1$, and put
+\begin{equation}\label{eq:S}
+S=\mathbb{E}\,m(X_1-Y_1)+\mathbb{E}\,m(Y_1-X_2)+\mathbb{E}\,m(X_2-Y_2)+\mathbb{E}\,m(Y_2-X_1-1),
+\end{equation}
+each expectation being taken in the distribution of the pair of outcomes that occurs in it.
+
+\begin{lemma}\label{lem:chain}
+For every behaviour $P(a,b|x,y)$, $I_d=4-\frac{2}{d-1}\,S$.
+\end{lemma}
+
+\begin{proof}
+Consider the terms of \eqref{eq:cglmp} that involve $A_1$ and $B_1$, and let $t=m(A_1-B_1)$. For
+$0\le k\le\lfloor d/2\rfloor-1$ the event $t=k$ has weight $1-\frac{2k}{d-1}$, and the event $t=d-1-k$ has weight
+$-(1-\frac{2k}{d-1})=1-\frac{2(d-1-k)}{d-1}$. If $d$ is odd, the remaining value $t=(d-1)/2$ does not occur and
+$1-\frac{2t}{d-1}=0$ there. So these terms equal $\mathbb{E}f(t)$ with $f(t)=1-\frac{2t}{d-1}$ for all
+$t\in\{0,\dots,d-1\}$, that is $1-\frac{2}{d-1}\mathbb{E}\,m(A_1-B_1)$. In the same way the terms with $(B_1,A_2)$,
+$(A_2,B_2)$ and $(B_2,A_1)$ give $1-\frac2{d-1}\mathbb{E}\,m(B_1-A_2-1)$, $1-\frac2{d-1}\mathbb{E}\,m(A_2-B_2)$ and
+$1-\frac2{d-1}\mathbb{E}\,m(B_2-A_1)$. In the relabelled variables the sum of the four expectations is $S$.
+\end{proof}
+
+\begin{remark}
+The local bound $I_d\le2$ reads $S\ge d-1$; this is the form in which the inequality is written in~\cite{OQP},
+where it is attributed to Gill. For no-signalling behaviours one also has $S=d\Pi-1$ with
+$\Pi=P(X_1<Y_1)+P(Y_1<X_2)+P(X_2<Y_2)+P(Y_2\le X_1)$ (outcomes compared as integers in $\{0,\dots,d-1\}$), which
+follows from $m(u-v)=u-v+d\,[u<v]$ for $u,v\in\{0,\dots,d-1\}$. So $I_d\le2$ is equivalent to $\Pi\ge1$, the form
+of the CGLMP inequality used by Zohren and Gill~\cite[eq.~(3)]{ZG}. We do not use these facts.
+\end{remark}
+
+\subsection{Maximally entangled strategies}
+A projective strategy on $\Phi_D$ gives $P(a,b|x,y)=\langle\Phi_D|P^x_a\otimes Q^y_b|\Phi_D\rangle
+=\tau\bigl(P^x_a(Q^y_b)^T\bigr)$ with $\tau=\frac1D\Tr$. With the unitaries \eqref{eq:chainR}, which satisfy
+$R_i^d=1$, and the Fourier expansion
+\begin{equation}\label{eq:mfourier}
+m(t)=\frac{d-1}{2}+\sum_{n=1}^{d-1}c_n\,w^{nt},\qquad c_n=-\frac{1}{1-w^{-n}},
+\end{equation}
+one finds $\mathbb{E}\,w^{n(X_1-Y_1)}=\tau(R_1^nR_2^{-n})$, $\mathbb{E}\,w^{n(Y_1-X_2)}=\tau(R_2^nR_3^{-n})$,
+$\mathbb{E}\,w^{n(X_2-Y_2)}=\tau(R_3^nR_4^{-n})$ and $\mathbb{E}\,w^{n(Y_2-X_1-1)}=w^{-n}\tau(R_4^nR_1^{-n})$.
+Hence
+\begin{equation}\label{eq:Strace}
+S=2(d-1)+\sum_{n=1}^{d-1}c_n\,\Lambda_n(R),\qquad
+\Lambda_n(R)=\sum_{i=0}^{3}\tau\bigl(L^{(i)}_n\bigr),
+\end{equation}
+with the links $L^{(i)}_n$ defined in the introduction. Conversely, any four unitaries $R_1,\dots,R_4$ on $\C^D$
+with $R_i^d=1$ come from a projective strategy on $\Phi_D$, through their spectral projections. (The coefficient
+in \eqref{eq:mfourier} is $\frac1d\sum_{t=0}^{d-1}t\,w^{-nt}=-1/(1-w^{-n})$ for $n\ne0$.)
+
+\subsection{The reduction}
+For unitaries $V_0,\dots,V_{d-1}\in U(M)$ with $V_k^4=1$ let $X$ be the cyclic shift $X|k\rangle=|k+1\rangle$ on
+$\C^d$ (indices modulo $d$) and define the \emph{covariant strategy} $R^V$ on $\C^d\otimes\C^M$ by
+\begin{equation}\label{eq:covariant}
+W=\sum_{k=0}^{d-1}|k\rangle\langle k|\otimes z^kV_k,\qquad R^V_1=X\otimes\one_M,\qquad
+R^V_{i+1}=WR^V_iW^*\quad(i=1,2,3).
+\end{equation}
+
+\begin{theorem}[reduction to the clock model]\label{thm:reduction}
+\begin{enumerate}
+\item For every covariant strategy, $S(R^V)=2(d-1)-\frac2d F(V)$, that is $I_d(R^V)=\frac{4F(V)}{d(d-1)}$.
+\item For every projective strategy $R$ on $\Phi_D$ there are $M$ (one can take $M=4D$) and unitaries
+$V_0,\dots,V_{d-1}\in U(M)$ with $V_k^4=1$ such that $R$ is unitarily equivalent to a direct summand of
+$R^V$ (simultaneous conjugation of $R_1,\dots,R_4$) and $I_d(R)=I_d(R^V)=\frac{4F(V)}{d(d-1)}$.
+\end{enumerate}
+Consequently, $I_d\le\IME(d)$ holds for all projective strategies on maximally entangled states of all
+dimensions if and only if $F(V)\le\FD$ for all $M$ and all $V_0,\dots,V_{d-1}\in U(M)$ with $V_k^4=1$.
+\end{theorem}
+
+The family $V$ in (2) is produced by a twirl over a cyclic symmetry of order $4d$ followed by the
+Stone--von Neumann theorem for $\Z_d$; it is unique up to simultaneous unitary conjugation of the $V_k$
+(Appendix~\ref{app:reduction}). We call it the \emph{reduced family} of $R$.
+
+\subsection{The DKZ strategy}\label{subsec:dkz}
+Let $W_0=\mathrm{diag}(z^k)_{k=0}^{d-1}$, so that $R^{(0)}:=R^V$ for $M=1$, $V\equiv1$, is
+$R^{(0)}_i=W_0^{i-1}XW_0^{-(i-1)}$. The measurement procedure of~\cite[eqs.~(12)--(15)]{CGLMP} (diagonal phases
+$e^{2\pi i\alpha_xj/d}$ for Alice and $e^{2\pi i\beta_yj/d}$ for Bob, then a discrete Fourier transform on each
+side, then a measurement in the computational basis, with $\alpha=(0,\frac12)$ and $\beta=(\frac14,-\frac14)$)
+amounts to measuring in the orthonormal bases
+$|k\rangle_{A,x}=d^{-1/2}\sum_je^{-2\pi ij(k+\alpha_x)/d}|j\rangle$ and
+$|l\rangle_{B,y}=d^{-1/2}\sum_je^{2\pi ij(l-\beta_y)/d}|j\rangle$; this gives the joint probabilities
+$P(A_x=k,B_y=l)=\bigl(2d^3\sin^2(\pi(k-l+\alpha_x+\beta_y)/d)\bigr)^{-1}$ of~\cite[eq.~(15)]{CGLMP}. Writing
+$D_\gamma=\mathrm{diag}(w^{\gamma j})$ and $F|j\rangle=d^{-1/2}\sum_kw^{jk}|k\rangle$ one has
+$U_x=D_{\alpha_x}^*(F^*Z_0F)D_{\alpha_x}=D_{\alpha_x}^*XD_{\alpha_x}$ with $Z_0=\mathrm{diag}(w^k)$, and similarly
+$(U'_y)^T=D_{\beta_y}XD_{\beta_y}^*$. Since $D_{1/4}=W_0$, the chain \eqref{eq:chainR} of the DKZ strategy is
+\[
+(R_1,R_2,R_3,R_4)=(W_0^{-2}XW_0^{2},\;W_0^{-1}XW_0,\;X,\;W_0XW_0^{-1})=G\,R^{(0)}\,G^*,\qquad G=W_0^{-2}.
+\]
+Thus DKZ is, up to the local unitary $G\otimes\bar G$ (which fixes $\Phi_d$), the covariant strategy with
+$V\equiv1$, and $I_d(\mathrm{DKZ})=4\FD/(d(d-1))=\IME(d)$ by Theorem~\ref{thm:reduction}(1).
+
+\subsection{The commutative sector}\label{subsec:sector}
+For $a\in\Z_4^d$ the \emph{clock-phase strategy} $R^a$ on $\Phi_d$ is the covariant strategy with $M=1$ and
+$V_k=i^{-a_k}$, that is
+\[
+R^a_1=X,\qquad R^a_{i+1}=W_aR^a_iW_a^*,\qquad W_a=\mathrm{diag}\bigl(z^k\,i^{-a_k}\bigr)_{k=0}^{d-1}.
+\]
+All four of its measurement bases are Fourier bases dressed by diagonal phases, consecutive ones differing by the
+same diagonal unitary $W_a$, and $I_d(R^a)=4F(a)/(d(d-1))$ with $F(a)$ as in \eqref{eq:Fa}. If $V_0,\dots,V_{d-1}$
+commute, a common eigenbasis $(v_\mu)$ splits $R^V$ into the direct sum $\bigoplus_\mu R^{a(\mu)}$, where
+$V_kv_\mu=i^{-a_k(\mu)}v_\mu$.
+
+\begin{proposition}[equal links]\label{prop:links}
+A projective strategy on $\Phi_D$ has equal links if and only if its reduced family consists of pairwise
+commuting unitaries. In particular every clock-phase strategy, and every covariant strategy with commuting $V$,
+has equal links.
+\end{proposition}
+
+The proof is in Appendix~\ref{app:reduction}. The equal-link condition for $n=1$ is one of the conditions that
+appear in the rigidity analysis of~\cite{repo}.
+
+\section{The cotangent representation; proofs of Theorem~\ref{thm:B} and Corollary~\ref{cor:C}}\label{sec:cot}
+
+\begin{lemma}[cotangent representation]\label{lem:cot}
+Let $N=4d$ and $\kappa(u)=\cot(\pi u/N)$ as above. For $a\in\Z_4^d$ put
+$S_a=\{k-da_k \bmod N: 0\le k\le d-1\}$. Then $S_a$ contains exactly one element of each residue class modulo
+$d$, every such transversal is $S_a$ for exactly one $a$, the sets $S_a$ and $S_a-d$ are disjoint, and
+\[
+F(a)=\frac12\sum_{\substack{x,y\in S_a\\ x\ne y}}\sec\frac{\pi(x-y)}{2d}=\frac12\ip{S_a}{S_a-d}-\frac d2 .
+\]
+Moreover $S_a$ is an interval $[c,c+d)$ if and only if $a$ is one-step, and then $(S_a,S_a-d)=([c,c+d),[c-d,c))$.
+\end{lemma}
+
+\begin{proof}
+Let $x_k=k-da_k$. For $j<k$, $m=k-j$ and $s=a_k-a_j$ we have $x_k-x_j=m-ds$ and
+$\Re[h_mi^s]=\sec(\psi_m-s\pi/2)$ (for $s=0,1,2,3$ both sides equal $\sec\psi_m,\csc\psi_m,-\sec\psi_m,-\csc\psi_m$),
+which is $\sec(\pi(x_k-x_j)/(2d))$; the function $u\mapsto\sec(\pi u/(2d))$ is even and has period $4d$. This
+gives the first expression for $F(a)$. The first assertions are clear since $x_k\equiv k\pmod d$ and $a_k$ ranges
+over $\Z_4$.
+
+Next, $\cot p-\cot q=\sin(q-p)/(\sin p\sin q)$ and $\sin(\frac t2+\frac\pi4)\sin(\frac t2-\frac\pi4)=-\frac12\cos t$
+give $\sec t=\frac12[\cot(\frac t2+\frac\pi4)-\cot(\frac t2-\frac\pi4)]$. With $t=2\pi(x-y)/N$ and $\pi/4=\pi d/N$
+this reads
+\[
+\sec\frac{\pi(x-y)}{2d}=\frac12\bigl[\kappa(x-y+d)-\kappa(x-y-d)\bigr]\qquad(x\not\equiv y\bmod d),
+\]
+where no pole occurs because $x-y\pm d\not\equiv0\pmod{4d}$. Summing over ordered pairs $x\ne y$ in $S_a$ and using
+that $\kappa$ is odd, the two halves are equal, so
+$F(a)=\frac12\sum_{x\ne y}\kappa(x-y+d)=\frac12\bigl[\ip{S_a}{S_a-d}-d\,\kappa(d)\bigr]$ and $\kappa(d)=\cot(\pi/4)=1$.
+If $x=y-d$ with $x,y\in S_a$, then $x\equiv y\pmod d$, so $x=y$ and $d\equiv0\pmod{4d}$, which is impossible; hence
+$S_a\cap(S_a-d)=\emptyset$. Finally, if $a_k=c+[k\ge r]$ then
+$S_a=\{-dc+k:k<r\}\cup\{-dc-d+k:r\le k<d\}=-dc+[r-d,r)$. Conversely an interval of length $d$ is a transversal, so it
+is $S_a$ for a unique $a$; the $4d$ intervals and the $4d$ one-step configurations therefore correspond to each
+other bijectively.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:B} from Theorem~\ref{thm:A}]
+Let $a\in\Z_4^d$. By Lemma~\ref{lem:cot} and Theorem~\ref{thm:A} with $N=4d$, $A=S_a$, $B=S_a-d$ (so that
+$|A|=|B|=d$ and $|C|=2d\ge1$),
+\[
+F(a)=\tfrac12\ip{S_a}{S_a-d}-\tfrac d2\le\tfrac12\Phi_{4d}(d,d)-\tfrac d2=F(0)=\FD ,
+\]
+because $S_0=[0,d)$ and $S_0-d=[-d,0)$. Equality holds if and only if $(S_a,S_a-d)$ is a rotation of $([0,d),[-d,0))$,
+that is, if and only if $S_a$ is an interval, that is, if and only if $a$ is one-step.
+
+Now let $V_0,\dots,V_{d-1}$ commute, $V_k^4=1$, in a von Neumann algebra with faithful normal tracial state $\tau$
+(for matrices, $\tau=\tr$). The spectral projections $P_{k,s}$ of $V_k$ ($V_k=\sum_{s\in\Z_4}i^{-s}P_{k,s}$) commute,
+so $\Pi_a=\prod_kP_{k,a_k}$, $a\in\Z_4^d$, is a finite family of orthogonal projections with sum $1$ and
+$V_k=\sum_ai^{-a_k}\Pi_a$. Then $\tau(V_jV_k^*)=\sum_a\tau(\Pi_a)\,i^{a_k-a_j}$ and
+\[
+F(V)=\sum_{a\in\Z_4^d}\tau(\Pi_a)\,F(a)\le\FD ,
+\]
+since $\tau(\Pi_a)\ge0$ and $\sum_a\tau(\Pi_a)=1$. Equality forces $\tau(\Pi_a)=0$, hence $\Pi_a=0$, for every $a$
+that is not one-step. For matrices this is the statement about joint eigenvectors.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:C}]
+Let $R$ have equal links and let $V$ be its reduced family. By Proposition~\ref{prop:links} the $V_k$ commute,
+so by Theorems~\ref{thm:reduction} and~\ref{thm:B}, $I_d(R)=4F(V)/(d(d-1))\le4\FD/(d(d-1))=\IME(d)$.
+
+Suppose equality holds. Diagonalise the $V_k$ in a common orthonormal basis $(v_\mu)_{\mu=1}^M$ (this conjugates
+$W$ by $\one\otimes u_0$ and leaves $X\otimes\one$ unchanged). By Theorem~\ref{thm:B} every $a(\mu)$ is one-step,
+$a_k(\mu)=c_\mu+[k\ge r_\mu]$, and $R^V=\bigoplus_\mu R^{a(\mu)}$. For $0\le r\le d-1$ one computes
+$X^rW_0X^{-r}=\mathrm{diag}(z^{(k-r)\bmod d})=z^{-r}i\,\mathrm{diag}(z^ki^{-[k\ge r]})$, using $z^d=i$. Hence
+$W_{a(\mu)}=\gamma_\mu X^{r_\mu}W_0X^{-r_\mu}$ with $|\gamma_\mu|=1$, and since $X$ commutes with $X^{r_\mu}$,
+$R^{a(\mu)}_i=X^{r_\mu}R^{(0)}_iX^{-r_\mu}$ for $i=1,\dots,4$. So $R^V$ is unitarily equivalent to
+$R^{(0)}\otimes\one_M$, and by Theorem~\ref{thm:reduction}(2) $R$ is unitarily equivalent to the restriction of
+$R^{(0)}\otimes\one_M$ to an invariant subspace $H'$. The $*$-algebra generated by $R^{(0)}_1,\dots,R^{(0)}_4$ is all of
+$M_d(\C)$: it contains $X$ and $R^{(0)}_1(R^{(0)}_2)^{-1}=XW_0X^{-1}W_0^*=z^{-1}(\one+(i-1)|0\rangle\langle0|)$,
+hence $|0\rangle\langle0|$ and all matrix units $X^k|0\rangle\langle0|X^{-l}$. Therefore the commutant of
+$\{R^{(0)}_i\otimes\one_M\}$ is $\one\otimes M_M(\C)$, and the invariant subspace $H'$, being the range of a
+projection in this commutant, is $\C^d\otimes K$ for a subspace $K$. So $D=d\dim K$ and $R$ is unitarily
+equivalent to $R^{(0)}\otimes\one_K$, hence (Section~\ref{subsec:dkz}) to $\mathrm{DKZ}\otimes\one_K$.
+A simultaneous conjugation $R_i\mapsto uR_iu^*$ of the unitaries \eqref{eq:chainR} is the same as the local unitary
+$u\otimes\bar u$ applied to the strategy, and $(u\otimes\bar u)\Phi_D$ is again maximally entangled. Conversely
+$\mathrm{DKZ}\otimes\one$ attains $\IME(d)$ and has equal links.
+
+For the clock-phase strategies, $I_d(R^a)=4F(a)/(d(d-1))$, and $F(a)\le\FD$ with equality exactly for one-step $a$
+by the first part of the proof of Theorem~\ref{thm:B}.
+\end{proof}
+
+\section{Proof of Theorem~\ref{thm:A}}\label{sec:A}
+
+Fix $N\ge2$, write $\kappa(u)=\cot(\pi u/N)$ also for real $u\notin N\Z$, and recall $\kappa(0)=0$ on $\Z_N$. The
+function $\kappa$ is odd and $N$-periodic. For $X\subseteq\Z_N$ let
+\[
+p_X(t)=\sum_{s\in X}\kappa(t-s)\qquad(t\in\Z_N).
+\]
+Two facts will be used repeatedly: $\ip YX=-\ip XY$ (oddness; in particular $\ip XX=0$), and
+$\sum_{u\in\Z_N}\kappa(u)=0$ (the terms $u$ and $-u$ cancel, and $\kappa(N/2)=0$ if $N$ is even), so that
+$\ip X{\Z_N}=0$ for every $X$.
+
+Given disjoint $A,B$ we always put $C=\Z_N\setminus(A\cup B)$ and $c=|C|$, and think of the elements of $A$, $B$,
+$C$ as coloured by the three colours $A$, $B$, $C$.
+
+\emph{Trivial cases.} If $a=0$ or $b=0$, both $\ip AB$ and $\Phi_N(a,b)$ are empty sums. If $c=0$, then
+$\ip AB=\ip A{\Z_N}-\ip AA=0$, and $\Phi_N(a,b)=0$ for the same reason. So from now on $a,b,c\ge1$, and in
+particular $N\ge3$.
+
+\subsection{Cyclic symmetry}
+
+\begin{lemma}[cyclic symmetry]\label{lem:cyclic}
+The three pairings are equal, $\ip AB=\ip BC=\ip CA=:Q$. Consequently
+\[
+Q=\sum_{y\in B}p_C(y)=\sum_{t\in C}p_A(t)=\sum_{x\in A}p_B(x).
+\]
+\end{lemma}
+
+\begin{proof}
+$0=\ip A{\Z_N}=\ip AA+\ip AB+\ip AC$ gives $\ip AB=-\ip AC=\ip CA$, and $0=\ip B{\Z_N}$ gives
+$\ip BC=-\ip BA=\ip AB$. The three formulas are $\ip BC$, $\ip CA$ and $\ip AB$ written out.
+\end{proof}
+
+\subsection{The exchange identity}
+For $1\le u\le N-2$ let $\delta(u)=\kappa(u)-\kappa(u+1)$. Since $\pi u/N$ and $\pi(u+1)/N$ lie in $(0,\pi)$ and
+$\cot$ is strictly decreasing there, $\delta(u)>0$.
+
+\begin{lemma}[exchange identity]\label{lem:swap}
+Let $x\in\Z_N$ with $x\in A$ and $x+1\in B$, and let $(A',B')$ be obtained by exchanging the two colours
+($A'=A\setminus\{x\}\cup\{x+1\}$, $B'=B\setminus\{x+1\}\cup\{x\}$). Then
+\[
+\ip{A'}{B'}-\ip AB=p_C(x)-p_C(x+1)=\sum_{t\in C}\delta(x-t)>0,
+\]
+where $x-t$ is read in $\{1,\dots,N-2\}$. Likewise, exchanging an adjacent pair coloured $(B,C)$ increases the
+common value $Q$ of Lemma~\ref{lem:cyclic} by $\sum_{s\in A}\delta(x-s)>0$, and exchanging an adjacent pair
+coloured $(C,A)$ increases it by $\sum_{y\in B}\delta(x-y)>0$.
+\end{lemma}
+
+\begin{proof}
+The exchange does not change $C$, so by Lemma~\ref{lem:cyclic} (applied before and after)
+$\ip{A'}{B'}-\ip AB=\sum_{y\in B'}p_C(y)-\sum_{y\in B}p_C(y)=p_C(x)-p_C(x+1)$. For $t\in C$ we have
+$t\notin\{x,x+1\}$, so $x-t\bmod N\in\{1,\dots,N-2\}$ and $\kappa(x-t)-\kappa(x+1-t)=\delta(x-t)$. The sum is
+positive because $C\neq\emptyset$. For a pair coloured $(B,C)$ the set $A$ is unchanged and
+$Q=\sum_{t\in C}p_A(t)$; for a pair coloured $(C,A)$ the set $B$ is unchanged and $Q=\sum_{x\in A}p_B(x)$. The same
+computation applies, and $A,B\ne\emptyset$.
+\end{proof}
+
+We call a colouring \emph{cyclically ordered} if no adjacent pair $(x,x+1)$ is coloured $(A,B)$, $(B,C)$ or $(C,A)$.
+
+\begin{corollary}\label{cor:monotone}
+Let $a,b,c\ge1$. Every maximiser of $\ip AB$ (over disjoint $A,B$ of sizes $a,b$) is cyclically ordered. A
+cyclically ordered colouring consists of $3w$ nonempty maximal blocks of consecutive points, for some integer
+$w\ge1$ (the winding number), which occur in the cyclic order
+\[
+C_1,B_1,A_1,\;C_2,B_2,A_2,\;\dots,\;C_w,B_w,A_w
+\]
+in the direction of increasing $x$. The colourings with $w=1$ are exactly the rotations of $([0,a),[-b,0))$.
+\end{corollary}
+
+\begin{proof}
+The first assertion follows from Lemma~\ref{lem:swap}, since exchanges preserve the sizes. In a cyclically
+ordered colouring every colour change from $x$ to $x+1$ is of type $B\to A$, $A\to C$ or $C\to B$; assigning
+$C\mapsto0$, $B\mapsto1$, $A\mapsto2$ in $\Z_3$, each change adds $1$. Going once around the circle the total
+change is $0$ in $\Z_3$, so the number of changes is $3w$ for an integer $w$, and $w\ge1$ because all three colours
+occur. The maximal blocks between consecutive changes then follow the stated order. For $w=1$ there is one block
+of each colour, in the order $C,B,A$; so $B=r+[-b,0)$ and $A=r+[0,a)$ for some $r$.
+\end{proof}
+
+\subsection{Smearing}
+Let $\T_N=\R/N\Z$ with Lebesgue measure. For $X\subseteq\Z_N$ let $\widetilde X=\bigcup_{x\in X}[x,x+1)\subseteq\T_N$,
+and for measurable $U,V\subseteq\T_N$ put
+\[
+\Qc(U,V)=\int_U\int_V\kappa(\xi-\eta)\,d\eta\,d\xi
+\]
+whenever the integral converges absolutely. For $m\in\{1,\dots,N-1\}$ define
+\[
+\kb(m)=\int_0^1\!\!\int_0^1\kappa(m+s-t)\,ds\,dt=\int_{-1}^{1}(1-|v|)\,\kappa(m+v)\,dv,\qquad e(m)=\kappa(m)-\kb(m).
+\]
+The integrand of $\kb(m)$ is bounded: the only possible poles, at $v=-1$ for $m=1$ and at $v=1$ for $m=N-1$, sit
+where the weight $1-|v|$ vanishes to first order.
+
+\begin{lemma}[smearing]\label{lem:smear}
+For disjoint $A,B\subseteq\Z_N$ the integral $\Qc(\widetilde A,\widetilde B)$ converges absolutely and
+\[
+\ip AB=\Qc(\widetilde A,\widetilde B)+E(A,B),\qquad E(A,B)=\sum_{x\in A,\,y\in B}e(x-y),
+\]
+where $x-y$ is read in $\{1,\dots,N-1\}$.
+\end{lemma}
+
+\begin{proof}
+$\Qc(\widetilde A,\widetilde B)=\sum_{x\in A,y\in B}\int_0^1\int_0^1\kappa(x-y+s-t)\,ds\,dt$. For $x-y\equiv m$ the
+integrand is singular only if $m+s-t\in N\Z$, which for $s,t\in[0,1]$ happens only at a corner of the square
+($m=1$, $s=0$, $t=1$, or $m=N-1$, $s=1$, $t=0$). There $|\kappa|$ is bounded by a constant times
+$1/(s+1-t)$, respectively $1/(1-s+t)$, which is integrable on the square. The substitution $v=s-t$, whose density
+on $[-1,1]$ is $1-|v|$, gives the second expression for $\kb$, and the cell integral equals $\kb(x-y)$.
+\end{proof}
+
+\subsection{The continuous inequality}
+Let $\T=\R/2\pi\Z$. A finite union $V'$ of pairwise disjoint open arcs $(p_j,q_j)$, $j=1,\dots,n$, with
+$p_j<q_j<p_j+2\pi$ and total length $\beta=\sum_j(q_j-p_j)\in(0,2\pi)$, has the conjugate function
+\begin{equation}\label{eq:conj}
+g_{V'}(\theta)=\frac1{2\pi}\,\mathrm{p.v.}\!\int_{V'}\cot\frac{\theta-\varphi}{2}\,d\varphi
+=\frac1\pi\sum_{j=1}^n\log\left|\frac{\sin\frac{\theta-p_j}2}{\sin\frac{\theta-q_j}2}\right|
+\qquad(\theta\notin\{p_j,q_j\}),
+\end{equation}
+since $\frac{d}{d\varphi}\bigl(-2\log|\sin\frac{\theta-\varphi}2|\bigr)=\cot\frac{\theta-\varphi}2$. It has logarithmic
+singularities at the endpoints and is integrable on $\T$.
+
+\begin{lemma}[distribution of the conjugate function]\label{lem:boole}
+In this situation, for every $\lambda\in\R$,
+\[
+\bigl|\{\theta\in\T\setminus V':g_{V'}(\theta)>\lambda\}\bigr|=2\pi\,\mu_\beta\bigl((0,e^{-\pi\lambda})\bigr),
+\]
+where $\mu_\beta$ is the Cauchy distribution on $\R$ with density
+$\frac1\pi\,\frac{\sin(\beta/2)}{(t-\cos(\beta/2))^2+\sin^2(\beta/2)}$. In particular the left side depends only on
+$\beta$ and $\lambda$.
+\end{lemma}
+
+\begin{proof}
+Let $\D$ be the open unit disc and $\HH$ the open upper half plane. Consider the rational function
+\[
+\Psi(z)=e^{-i\beta/2}\prod_{j=1}^n\frac{e^{iq_j}-z}{e^{ip_j}-z}.
+\]
+\emph{$\Psi$ maps $\D$ into $\HH$.} Let $\mathcal F(z)=\frac1{2\pi}\int_{V'}\frac{e^{i\varphi}+z}{e^{i\varphi}-z}\,d\varphi$
+($z\in\D$), an analytic function whose real part is the Poisson integral of $\one_{V'}$. As $0<|V'|<2\pi$, the
+positivity of the Poisson kernel gives $0<\Re\mathcal F<1$ on $\D$. For one arc $(p,q)$, the partial fractions
+$\frac{\zeta+z}{\zeta(\zeta-z)}=\frac2{\zeta-z}-\frac1\zeta$ and the substitution $\zeta=e^{i\varphi}$ give
+$\frac1{2\pi}\int_{p}^{q}\frac{e^{i\varphi}+z}{e^{i\varphi}-z}d\varphi
+=\frac1{\pi i}\log\frac{e^{iq}-z}{e^{ip}-z}-\frac{q-p}{2\pi}$ for some branch of the logarithm.
+Summing over the arcs and exponentiating, $\exp(i\pi\mathcal F)=\Psi$ on $\D$, whatever the branches. Hence
+$\arg\Psi=\pi\Re\mathcal F\in(0,\pi)$, that is, $\Psi(\D)\subseteq\HH$. Also $\Psi(0)=e^{-i\beta/2}e^{i\beta}=e^{i\beta/2}$.
+
+\emph{Boundary values.} For $\theta\notin\{p_j,q_j\}$,
+$e^{iq_j}-e^{i\theta}=-2ie^{i(q_j+\theta)/2}\sin\frac{\theta-q_j}2$ and similarly for $p_j$, so
+\[
+\Psi(e^{i\theta})=\prod_{j=1}^n\frac{\sin\frac{\theta-q_j}2}{\sin\frac{\theta-p_j}2}\in\R\setminus\{0\},\qquad
+|\Psi(e^{i\theta})|=e^{-\pi g_{V'}(\theta)} .
+\]
+Each factor is $2\pi$-periodic in $\theta$; taking $\theta\in(p_j,p_j+2\pi)$, its denominator is positive and its
+numerator is negative exactly for $\theta<q_j$. So the $j$-th factor is negative exactly on the $j$-th arc,
+and, the arcs being disjoint, $\Psi(e^{i\theta})<0$ if and only if $\theta\in V'$. Therefore
+\[
+\{\theta\in\T\setminus V':g_{V'}(\theta)>\lambda\}=\{\theta:0<\Psi(e^{i\theta})<e^{-\pi\lambda}\}
+\]
+up to finitely many points.
+
+\emph{The law of the boundary values.} Let $w_0=\Psi(0)=e^{i\beta/2}\in\HH$ and
+$\mathcal M(\zeta)=(\zeta-w_0)/(\zeta-\bar w_0)$, a M\"obius map of $\HH$ onto $\D$ and of $\R\cup\{\infty\}$
+onto the unit circle, with $\mathcal M(w_0)=0$. The rational function $B=\mathcal M\circ\Psi$ maps $\D$ into $\D$;
+it has no poles on the closed disc (it could only have poles where $\Psi=\bar w_0$, which does not happen there;
+at the poles $e^{ip_j}$ of $\Psi$ it takes the value $1$), and $|B|=1$ on the unit circle. For $k\ge1$ the mean
+value property of $B^k$ gives $\frac1{2\pi}\int_0^{2\pi}B(e^{i\theta})^k\,d\theta=B(0)^k=0$, and by conjugation also
+$\frac1{2\pi}\int\overline{B}^k=0$. So the image of the normalised arc length under $\theta\mapsto B(e^{i\theta})$ has
+the Fourier coefficients of the normalised arc length, and is therefore the normalised arc length. Finally,
+$\Psi(e^{i\theta})=\mathcal M^{-1}(B(e^{i\theta}))$ off finitely many points, and $\mathcal M^{-1}$ carries the
+normalised arc length to the harmonic measure of $\HH$ at $\mathcal M^{-1}(0)=w_0$, which is the Cauchy distribution
+with centre $\Re w_0=\cos(\beta/2)$ and scale $\Im w_0=\sin(\beta/2)$. (For a bounded continuous $f$ on $\R$ with a
+limit at $\infty$, its Poisson extension $u$ to $\HH$ satisfies $u(w_0)=\frac1{2\pi}\int f(\mathcal M^{-1}(e^{it}))\,dt$ by
+the mean value property of the harmonic function $u\circ\mathcal M^{-1}$ at $0$.) So the image of $d\theta/2\pi$ under
+$\theta\mapsto\Psi(e^{i\theta})$ is $\mu_\beta$, and the lemma follows.
+\end{proof}
+
+For sets $E$ of finite measure on the line, the fact that the distribution function of the Hilbert transform of
+$\one_E$ depends only on $|E|$ is a theorem of Stein and Weiss~\cite{SW}; for sums of point masses the analogous
+statement is Boole's identity~\cite{Boole} (see also Loomis~\cite{Loomis} and~\cite{CLM}). That the distributions
+on $E$ and on its complement depend only on $|E|$ separately is due to Laeng~\cite{Laeng} (see the discussion
+in~\cite[Section~4]{GL}). Lemma~\ref{lem:boole} is the circle version of the latter statement for finite unions of
+arcs, which is all we need; the proof above is the standard one, made explicit by the fact that $\Psi$ is a
+rational function. Proposition~\ref{prop:cont} below is then a direct consequence of the bathtub principle, and
+we do not claim novelty for it.
+
+\begin{proposition}[continuous rearrangement]\label{prop:cont}
+Let $U,V\subseteq\T_N$ be disjoint, each a finite union of half-open intervals, with $|U|=a$ and $|V|=b$, where
+$0<b<N$. Then $\Qc(U,V)$ converges absolutely and
+\[
+\Qc(U,V)\le\Qc\bigl([0,a),[-b,0)\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+Absolute convergence: the closures of $U$ and $V$ meet in finitely many points. Near such a point $|\kappa(\xi-\eta)|$
+is at most a constant times $1/|\xi-\eta|$, with $\xi$ and $\eta$ on opposite sides of the point, and
+$\int_0^{1}\int_0^{1}\frac{ds\,dt}{s+t}<\infty$; elsewhere the integrand is bounded.
+
+Rescale by $\theta=2\pi\xi/N$, $\varphi=2\pi\eta/N$, and let $U',V'\subseteq\T$ be the images of $U,V$; after merging
+touching intervals and discarding finitely many points, $V'$ is a union of disjoint open arcs of total length
+$\beta=2\pi b/N\in(0,2\pi)$, and $U'\subseteq\T\setminus V'$ has measure $\alpha=2\pi a/N$. By Fubini and
+\eqref{eq:conj},
+\[
+\Qc(U,V)=\Bigl(\frac N{2\pi}\Bigr)^2\int_{U'}\int_{V'}\cot\frac{\theta-\varphi}2\,d\varphi\,d\theta
+=\frac{N^2}{2\pi}\int_{U'}g_{V'}(\theta)\,d\theta .
+\]
+Let $\Omega=\T\setminus V'$ and let $t_0$ be such that the set $U^\star=\{\theta\in\Omega:g_{V'}(\theta)>t_0\}$
+has measure $\alpha$; such $t_0$ exists because $g_{V'}$ is real analytic and non-constant on each arc of $\Omega$,
+so its level sets are finite and the distribution function is continuous. Then $g_{V'}\le t_0$ on
+$U'\setminus U^\star$, $g_{V'}\ge t_0$ on $U^\star\setminus U'$, and $|U'\setminus U^\star|=|U^\star\setminus U'|$, so
+\[
+\int_{U'}g_{V'}-\int_{U^\star}g_{V'}=\int_{U'\setminus U^\star}g_{V'}-\int_{U^\star\setminus U'}g_{V'}\le0
+\]
+(the bathtub principle, cf.~\cite[Thm.~1.14]{LL}). The value $\int_{U^\star}g_{V'}=\int_0^{\alpha}g^*(s)\,ds$, with $g^*$
+the decreasing rearrangement of $g_{V'}|_\Omega$, depends only on the distribution function of $g_{V'}$ on
+$\Omega$, hence, by Lemma~\ref{lem:boole}, only on $\alpha$ and $\beta$. For the arc $V'_0=(-\beta,0)$,
+\[
+g_{V'_0}(\theta)=\frac1\pi\log\frac{\sin\frac{\theta+\beta}2}{\sin\frac\theta2},\qquad
+g_{V'_0}'(\theta)=\frac1{2\pi}\Bigl[\cot\frac{\theta+\beta}2-\cot\frac\theta2\Bigr]<0\qquad(0<\theta<2\pi-\beta),
+\]
+so its superlevel sets in $\T\setminus V'_0=(0,2\pi-\beta)$ are initial intervals and $U^\star=(0,\alpha)$. Hence
+$\int_{U'}g_{V'}\le\int_0^\alpha g_{V'_0}$, which after rescaling is the claim.
+\end{proof}
+
+\begin{remark}[degeneracy of the continuous problem]\label{rem:degenerate}
+The continuous inequality has many maximisers. For an integer $w\ge1$ let $\pi_w(\theta)=w\theta$ on $\T$. The
+conjugate function commutes with $f\mapsto f\circ\pi_w$ (the multiplier $-i\,\mathrm{sgn}(n)$ is invariant under
+$n\mapsto wn$), and $\pi_w$ preserves the normalised measure, so the $w$ arcs $\pi_w^{-1}((-\beta,0))$ and the $w$
+arcs $\pi_w^{-1}((0,\alpha))$ give the same value $\int_0^\alpha g_{V'_0}$. In the discrete problem these
+correspond to cyclically ordered colourings with winding number $w$, which are therefore excluded only by the
+junction terms $E(A,B)$ of Lemma~\ref{lem:smear}.
+\end{remark}
+
+\begin{remark}[the discrete problem needs more]\label{rem:discrete}
+(i) The discrete analogue of Lemma~\ref{lem:boole} fails: for $N=7$ the values of $p_B$ on $\Z_7\setminus B$ are
+$\pm2.874,\pm1.026,0$ for $B=\{0,1\}$, but $\pm2.305,\pm0.569,0$ for $B=\{0,2\}$ (to three decimals). This is why
+the proof passes through the smeared sets and pays for the discretisation separately. (ii) Theorem~\ref{thm:A} is
+special to the cotangent kernel. For $N=20$ and the odd kernel $\kappa'=\one_{\{1\}}-\one_{\{-1\}}$, which is also
+non-increasing on $\{1,\dots,N-1\}$, the pair $A=\{0,10\}$, $B=\{9,19\}$ gives
+$\sum_{x\in A,y\in B}\kappa'(x-y)=2$, while two adjacent intervals of sizes $2$ and $2$ give $1$.
+\end{remark}
+
+\subsection{The junction function}
+For real $u\ge1$ let
+\[
+\varepsilon(u)=\frac1u-\int_{-1}^{1}\frac{1-|v|}{u+v}\,dv
+=\frac1u-\bigl[(u+1)\log(u+1)-2u\log u+(u-1)\log(u-1)\bigr]
+\]
+(with $0\log0=0$), and $\varepsilon(-u)=-\varepsilon(u)$. The second expression holds because
+$\int_{-1}^1(1-|v|)f(u+v)\,dv$ is the second difference $G(u+1)-2G(u)+G(u-1)$ of any $G$ with $G''=f$, and
+$G(x)=x\log x$ for $f(x)=1/x$ (at $u=1$ by continuity). In particular $\varepsilon(1)=1-2\log2$.
+
+\begin{lemma}[junction function]\label{lem:junction}
+\begin{enumerate}
+\item For $u\ge1$, $\displaystyle\varepsilon(u)=-\sum_{i\ge2}\frac{u^{-(2i-1)}}{i(2i-1)}$. Hence $\varepsilon(u)<0$,
+$|\varepsilon|$ is strictly decreasing on $[1,\infty)$, and for $u\ge2$
+\[
+|\varepsilon(u)|\le\frac1{6u^3}+\frac{4}{45\,u^5}.
+\]
+\item For $m\in\{1,\dots,N-1\}$, $e(m)=\frac N\pi\sum_{j\in\Z}\varepsilon(m+jN)$, the series converging
+absolutely.
+\item $e(N-m)=-e(m)$. For $1\le m\le N/2$, $\frac N\pi\varepsilon(m)\le e(m)\le0$, so $|e(m)|\le\frac N\pi|\varepsilon(m)|$.
+Moreover $|e(1)|\ge\frac N\pi\bigl(|\varepsilon(1)|-|\varepsilon(N-1)|\bigr)$, and for $N\ge6$
+\[
+|e(1)|\ge 0.38493\,\frac N\pi .
+\]
+\item For $N\ge 4$ put $\sprod=\sum_{m=2}^{\lfloor N/2\rfloor}(m-1)|e(m)|$ and $\fw=\sum_{m=2}^{\lfloor N/2\rfloor}m\,|e(m)|$.
+Then
+\begin{align*}
+\sprod&\le\Bigl[\frac{\zeta(2)-\zeta(3)}6+\frac4{45}\bigl(\zeta(4)-\zeta(5)\bigr)\Bigr]\frac N\pi\le0.07785\,\frac N\pi,\\
+\fw&\le\Bigl[\frac{\zeta(2)-1}6+\frac4{45}\bigl(\zeta(4)-1\bigr)\Bigr]\frac N\pi\le0.11481\,\frac N\pi .
+\end{align*}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) For $u>1$ and $|v|\le1$, $\frac1{u+v}=\sum_{n\ge0}(-v)^nu^{-n-1}$ uniformly in $v$. Odd powers integrate to zero
+against $1-|v|$, and $\int_{-1}^1(1-|v|)v^{2i}dv=\frac2{(2i+1)(2i+2)}$, so
+$\int_{-1}^1\frac{1-|v|}{u+v}dv=\sum_{i\ge0}\frac{u^{-2i-1}}{(i+1)(2i+1)}$. The term $i=0$ is $1/u$; shifting the index
+gives the series for $\varepsilon(u)$. At $u=1$ it follows by monotone convergence as $u\downarrow1$ (all terms are
+positive and both sides are continuous). Each term of $|\varepsilon(u)|$ is strictly decreasing in $u$. For $u\ge2$
+the term $i=2$ is $1/(6u^3)$, and for $i\ge3$ we have $i(2i-1)\ge15$ and $u^{-(2i-1)}\le u^{-5}4^{-(i-3)}$, so the
+remaining terms add up to at most $\frac{u^{-5}}{15}\sum_{j\ge0}4^{-j}=\frac{4}{45}u^{-5}$. (The exact value of
+$\sum_{i\ge3}4^{3-i}/(i(2i-1))$ is $0.07727\ldots<0.0773<4/45$.)
+
+(2) The partial fraction expansion $\pi\cot\pi s=\lim_{J\to\infty}\sum_{j=-J}^J\frac1{s+j}$, locally uniform on
+$\R\setminus\Z$, gives $\kappa(t)=\frac N\pi\lim_J\sum_{|j|\le J}\frac1{t+jN}$. On $[m-1,m+1]$ a term can have a pole
+only at an endpoint (the term $j=0$ at $t=0$ if $m=1$, the term $j=-1$ at $t=N$ if $m=N-1$); such terms are
+integrable against the tent weight, which vanishes at the endpoints, and the sum of the remaining terms converges
+uniformly on $[m-1,m+1]$. Integrating term by term gives $\frac\pi Ne(m)=\lim_J\sum_{|j|\le J}\varepsilon(m+jN)$, because for every real $u$ with $|u|\ge1$ one has
+$\frac1u-\int_{-1}^1\frac{1-|v|}{u+v}dv=\varepsilon(u)$ (for $u\le-1$ substitute $v\mapsto-v$ and use that $\varepsilon$ is odd).
+The series converges absolutely by (1), since $|\varepsilon(u)|\le\frac1{6|u|^3}+\frac4{45|u|^5}$ for $|u|\ge2$.
+
+(3) Both $\kappa$ and $\kb$ are odd under $m\mapsto N-m$ (for $\kb$ substitute $v\mapsto-v$). Let $1\le m\le N/2$. Grouping the
+terms of (2) as $j=0,-1,1,-2,2,\dots$ gives
+\[
+\frac\pi Ne(m)=-|\varepsilon(m)|+|\varepsilon(N-m)|-|\varepsilon(N+m)|+|\varepsilon(2N-m)|-\cdots,
+\]
+an alternating series whose arguments $m\le N-m\le N+m\le2N-m\le\cdots$ are non-decreasing, so its terms are
+non-increasing in absolute value and tend to zero. Hence the sum lies between the first two partial sums:
+$-|\varepsilon(m)|\le\frac\pi Ne(m)\le-|\varepsilon(m)|+|\varepsilon(N-m)|\le0$. For $m=1$ the right inequality gives the
+lower bound for $|e(1)|$. Numerically $|\varepsilon(1)|=2\log2-1=0.3862943\ldots$ and, for $N\ge6$,
+$|\varepsilon(N-1)|\le|\varepsilon(5)|=|\tfrac15-(6\log6-10\log5+4\log4)|=0.0013551\ldots$, so
+$|\varepsilon(1)|-|\varepsilon(N-1)|\ge0.3849392\ldots\ge0.38493$.
+
+(4) By (3) and (1), $\sprod\le\frac N\pi\sum_{m\ge2}(m-1)\bigl(\frac1{6m^3}+\frac4{45m^5}\bigr)$ and
+$\fw\le\frac N\pi\sum_{m\ge2}m\bigl(\frac1{6m^3}+\frac4{45m^5}\bigr)$; the sums are the stated combinations of
+$\zeta(2)=\pi^2/6$, $\zeta(3)$, $\zeta(4)=\pi^4/90$, $\zeta(5)$, whose values are $0.0778480\ldots$ and
+$0.1148066\ldots$.
+\end{proof}
+
+The numerical constants are rounded in the safe direction; they are re-derived in interval arithmetic by the
+script \texttt{check\_constants.py} (Section~\ref{sec:numerics}). The proof only needs
+$|e(1)|>2\,\sprod+\fw$, and the bounds give $0.38493>2\cdot0.07785+0.11481=0.27051$ (in units of $N/\pi$); see
+\eqref{eq:margin}.
+
+\subsection{The junction inequality}
+
+\begin{lemma}[junction inequality]\label{lem:junctionineq}
+Let $a,b,c\ge1$ and let $(A,B)$ be cyclically ordered with winding number $w\ge2$. Put $A_0=[0,a)$, $B_0=[-b,0)$.
+Then $N\ge6$ and
+\begin{equation}\label{eq:margin}
+E(A,B)-E(A_0,B_0)\le-(w-1)|e(1)|+w\,\sprod+\fw\le\frac N\pi\,(0.49974-0.30708\,w)<0 .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since there are $3w\ge6$ nonempty blocks, $N\ge6$. Sort the pairs $(x,y)\in A\times B$ by $m=x-y\in\{1,\dots,N-1\}$.
+
+\emph{$m=1$:} then $y\in B$ and $y+1=x\in A$, a colour change $B\to A$; in a cyclically ordered colouring these are
+exactly the $w$ boundaries between $B_i$ and $A_i$. They contribute $-w|e(1)|$.
+
+\emph{$m=N-1$:} then $x\in A$ and $x+1=y\in B$, a change $A\to B$, which does not occur.
+
+\emph{$2\le m\le N/2$:} these pairs contribute $\le0$ by Lemma~\ref{lem:junction}(3).
+
+\emph{$N/2<m\le N-2$:} put $m'=N-m=y-x\bmod N\in[2,N/2)$; the pair contributes $e(m)=|e(m')|$. Let $x\in A_i$ and let
+$r$ be the number of points of $A_i$ after $x$. Going forward from $x$ one meets these $r$ points, then the nonempty
+block $C_{i+1}$, and only then points of $B$; so $m'\ge r+2$. For fixed $x$ and $m'$ there is at most one $y$. Summing
+over the points of $A_i$, for which $r=0,1,\dots,|A_i|-1$, the contribution of $A_i$ is at most
+\[
+\sum_{r\ge0}\ \sum_{m'=r+2}^{\lfloor N/2\rfloor}|e(m')|=\sum_{m'=2}^{\lfloor N/2\rfloor}(m'-1)|e(m')|=\sprod,
+\]
+and the total over the $w$ blocks is at most $w\,\sprod$. Hence $E(A,B)\le-w|e(1)|+w\,\sprod$.
+
+For the pair $(A_0,B_0)$ all differences $m=x-y$ lie in $[1,a+b-1]\subseteq[1,N-2]$, the value $m=1$ occurs once,
+and each value $m$ occurs at most $m$ times, because $x\in[0,a)$ and $y=x-m\in[-b,0)$ force $0\le x\le m-1$ and $y$
+is determined by $x$. Pairs with $m>N/2$ contribute $\ge0$ and pairs with $2\le m\le N/2$ contribute
+$\ge-m|e(m)|$ in total for each $m$. Hence $E(A_0,B_0)\ge-|e(1)|-\fw$. Subtracting gives the first inequality in \eqref{eq:margin};
+inserting $|e(1)|\ge0.38493\,N/\pi$, $\sprod\le0.07785\,N/\pi$ and $\fw\le0.11481\,N/\pi$ from
+Lemma~\ref{lem:junction} gives $\frac N\pi\bigl(-(w-1)0.38493+0.07785\,w+0.11481\bigr)=\frac N\pi(0.49974-0.30708\,w)$,
+which is at most $-0.11442\,N/\pi<0$ for $w\ge2$.
+\end{proof}
+
+\subsection{Conclusion of the proof}
+\begin{proof}[Proof of Theorem~\ref{thm:A}]
+The trivial cases were treated at the beginning of this section; let $a,b,c\ge1$. There are finitely many pairs
+$(A,B)$, so a maximiser exists. By Corollary~\ref{cor:monotone} it is cyclically ordered with some winding number
+$w\ge1$. Suppose $w\ge2$. By Lemma~\ref{lem:smear}, Proposition~\ref{prop:cont} (applied to $U=\widetilde A$,
+$V=\widetilde B$, which are disjoint finite unions of half-open intervals of measures $a$ and $b$, and
+$\widetilde{A_0}=[0,a)$, $\widetilde{B_0}=[-b,0)$) and Lemma~\ref{lem:junctionineq},
+\[
+\ip AB=\Qc(\widetilde A,\widetilde B)+E(A,B)\le\Qc(\widetilde{A_0},\widetilde{B_0})+E(A,B)
+<\Qc(\widetilde{A_0},\widetilde{B_0})+E(A_0,B_0)=\ip{A_0}{B_0},
+\]
+contradicting maximality. So $w=1$, the maximiser is a rotation of $(A_0,B_0)$ by Corollary~\ref{cor:monotone},
+and the maximum is $\Phi_N(a,b)$ because $\ip{\cdot}{\cdot}$ is invariant under rotations. Every pair attaining
+$\Phi_N(a,b)$ is a maximiser, hence a rotation of $(A_0,B_0)$.
+\end{proof}
+
+\section{Numerical cross-checks}\label{sec:numerics}
+
+The proofs above are complete without computer assistance. The following checks were run to guard against
+errors in formulas and signs; they are \emph{numerical} (floating point, except where interval arithmetic is
+stated) and are not part of the proofs. The scripts and their outputs are in the folders \texttt{scripts/} and
+\texttt{logs/} of the accompanying material; \texttt{scripts/README.md} lists the commands.
+
+\begin{table}[h]
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.46\textwidth}@{}}
+\toprule
+Statement checked & Script & Range and outcome\\
+\midrule
+Theorem~\ref{thm:B} for $M=1$, by exhaustion & \texttt{verify\_writeup.py} & all $4^d$ configurations, $d=2,\dots,9$:
+$\max F=\FD$ (difference $\le 3\cdot10^{-14}$), exactly $4d$ maximisers, all intervals\\
+Lemma~\ref{lem:cot} & \texttt{verify\_writeup.py}, \texttt{cot\_rearr.py} & identity error $\le 8\cdot10^{-14}$, $d=2,\dots,9$\\
+Theorem~\ref{thm:A} by exhaustion & \texttt{cot\_rearr.py} & $(N,a,b)=(12,3,3)$, $(16,4,4)$, $(20,5,5)$, $(24,6,6)$,
+$(16,3,6)$, $(20,4,7)$: maximum $=\Phi_N(a,b)$, attained by adjacent intervals\\
+Lemmas~\ref{lem:cyclic}, \ref{lem:swap}, \ref{lem:smear} & \texttt{verify\_writeup.py} & random colourings,
+$N\in\{8,12,20,33,40\}$: errors $\le4\cdot10^{-13}$\\
+Corollary~\ref{cor:monotone} (exchanges) & \texttt{swap\_test.py} & all colourings for $(N,a,b)=(9,3,3)$, $(10,3,3)$,
+$(12,3,4)$, $(12,4,4)$: $290{,}710$ out-of-order exchanges, none decreases $\ip AB$\\
+Lemma~\ref{lem:junction}(2) & \texttt{verify\_writeup.py} & $N\le40$: agreement to $2\cdot10^{-7}$ (quadrature accuracy)\\
+Lemma~\ref{lem:junction}(3),(4) & \texttt{verify\_junction.py} & $N\in\{6,7,8,12,16,24,40,64,101\}$: signs and bounds hold;
+$0.38536\le|e(1)|/(N/\pi)\le0.38630$, $\sprod/(N/\pi)\le0.0733$, $\fw/(N/\pi)\le0.1097$\\
+constants in Lemmas~\ref{lem:junction} and~\ref{lem:junctionineq} & \texttt{check\_constants.py} & interval arithmetic
+(60 digits): all stated roundings are valid\\
+whole chain on exchange-flow endpoints & \texttt{verify\_chain.py} & random starts, $N\le80$: exchange identity to
+$3\cdot10^{-13}$; $\Qc\le\Qc^{\mathrm{block}}$, $E\le E^{\mathrm{block}}$ and $\ip AB\le\Phi_N$ at every endpoint\\
+Section~\ref{sec:model}, Appendix~\ref{app:reduction} & \texttt{check\_reduction.py} & checks (R1)--(R9) below\\
+Sherali--Adams relaxation & \texttt{classical\_sa.py} & $d=3,\dots,12$ (Section~\ref{sec:discussion})\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The script \texttt{check\_reduction.py} computes CGLMP values from outcome probabilities with the expression
+\eqref{eq:cglmp} and checks: (R1) Lemma~\ref{lem:chain} on random behaviours; (R2) formula \eqref{eq:Strace} on
+random projective strategies on $\Phi_D$, $D\le6$; (R3) Theorem~\ref{thm:reduction}(1) for random families $V$ with
+$M\le3$ (non-commuting for $M\ge2$); (R4) Theorem~\ref{thm:reduction}(2), by carrying out the twirl and the Stone--von Neumann
+decomposition of Appendix~\ref{app:reduction} on random strategies; (R5) Proposition~\ref{prop:links} on random
+strategies (unequal links, non-commuting reduced family) and on equal-link strategies (commuting reduced family);
+(R6) exhaustion over all clock-phase strategies for $d\le7$ (maximum $\IME(d)$, attained exactly by the $4d$
+one-step ones); (R7) the value $\IME(d)$ of the CGLMP measurements and the identity $R^{\mathrm{DKZ}}=GR^{(0)}G^*$ of
+Section~\ref{subsec:dkz}, $d\le8$; (R8) the projection form \eqref{eq:projform} and (R9) the Ising form of
+Section~\ref{sec:discussion}, for random non-commuting families. All identities hold to within $2\cdot10^{-14}$.
+
+\section{Discussion}\label{sec:discussion}
+
+\subsection{An Ising reformulation}
+A unitary $E$ with $E^4=1$ can be written as $E=e^{i\pi/4}(X-iX')/\sqrt2$ with commuting involutions $X,X'$: on
+the eigenspaces of $E$ for the eigenvalues $1$, $i$, $-1$, $-i$ take $(X,X')=(1,1)$, $(1,-1)$, $(-1,-1)$, $(-1,1)$,
+respectively. Put $E_k=V_k^*$,
+$X_k=X(E_k)$ and $X_{k+d}=X'(E_k)$ for $0\le k\le d-1$, and extend antiperiodically by $X_{n+2d}=-X_n$. If one
+expands $\tau(E_j^*E_k)$ and groups the terms by their distance on the ring $\Z_{2d}$, one obtains
+\[
+F(V)=\frac12\sum_{n\in\Z_{2d}}\sum_{u=1}^{d-1}\sec\frac{\pi u}{2d}\;\tau(X_nX_{n+u}),
+\]
+and conversely every family of involutions with $[X_n,X_{n+d}]=0$ arises. In the commutative sector this is the
+energy of a classical long-range ferromagnetic Ising ring of $2d$ spins with antiperiodic boundary condition;
+the DKZ configuration is a single domain wall. Theorem~\ref{thm:B} thus says that for these couplings the
+single domain wall is the unique ground state (up to translation and global sign). The constraint
+$[X_n,X_{n+d}]=0$ matters: the anticommuting choice $X_n=\cos(\frac{\pi n}{2d})\sigma_1+\sin(\frac{\pi n}{2d})\sigma_2$
+(Pauli matrices, $\tau=\frac12\Tr$) gives $\tau(X_nX_{n+u})=\cos\frac{\pi u}{2d}$ and hence the value $d(d-1)$, which
+exceeds $\FD$ because $(d-m)\sec\frac{\pi m}{2d}<d$ for $1\le m\le d-1$ (use $\cos x>1-\frac{2x}\pi$ on $(0,\frac\pi2)$).
+
+\subsection{Why local certificates are not enough}
+The degeneracy in Remark~\ref{rem:degenerate} is visible in the clock model itself. Let $w\ge5$ with
+$w\equiv1\pmod4$ divide $d$, and let $A=\bigcup_{j=0}^{w-1}\bigl(\tfrac{4d}{w}j+[0,\tfrac dw)\bigr)\subseteq\Z_{4d}$. Since
+$d\equiv\frac dw\pmod{\frac{4d}w}$, the translates $A,A+d,A+2d,A+3d$ are the $w$-fold unions of the four intervals of
+length $\frac dw$ in each period $\frac{4d}{w}$, so they partition $\Z_{4d}$; hence $A$ is a transversal, $A=S_a$ for some
+$a\in\Z_4^d$, and $(\widetilde A,\widetilde{A-d})$ is the $w$-fold cover of $([0,d),[-d,0))$. By
+Remark~\ref{rem:degenerate}, Lemma~\ref{lem:smear} and Lemma~\ref{lem:cot},
+\[
+\FD-F(a)=\tfrac12\bigl[E(A_0,B_0)-E(A,A-d)\bigr]\qquad(A_0=[0,d),\ B_0=[-d,0)),
+\]
+a difference of junction terms. The pair $(A,A-d)$ is cyclically ordered with winding number $w$, so by
+Lemma~\ref{lem:junctionineq} this difference is at least $\frac{2d}\pi(0.30708\,w-0.49974)$. It is also at most
+$\frac{2d}\pi\,0.50111\,w$: all differences occurring in $(A_0,B_0)$ lie in $[1,2d-1]$, so $E(A_0,B_0)\le0$ by
+Lemma~\ref{lem:junction}(3); and in $(A,A-d)$ a point $y$ of a block $B_i$ followed by $s$ further points of $B_i$
+has its first $A$-point at distance $s+1$, so, counting as in the proof of Lemma~\ref{lem:junctionineq},
+$E(A,A-d)\ge-w\sum_{m=1}^{2d}m|e(m)|=-w(|e(1)|+\fw)\ge-w(0.38630+0.11481)\frac{4d}\pi$. So the gap is of order $d$
+for fixed $w$, while $\FD\ge d(d-1)/2$: such ``$w$-fold'' configurations are separated from the DKZ
+configuration only at relative order $1/d$, and one should not expect certificates built from the marginals of a
+bounded number of sites to resolve this for large $d$. As an illustration (numerical, linear programming with the
+HiGHS solver, script
+\texttt{classical\_sa.py}): the relaxation of the classical clock model in which one optimises over consistent
+families of three-site marginals of the differences $a_k-a_j$ is exact for $d=3,\dots,8$, but exceeds $\FD$ by
+$0.535$, $2.52$, $5.23$ and $8.53$ for $d=9,10,11,12$. The argument of Section~\ref{sec:A} is global: it uses the
+cyclic order of the whole configuration, and the junction estimate compares different windings directly.
+
+\subsection{The non-commutative case}
+The first steps of the argument have operator versions. Let $V_0,\dots,V_{d-1}$ be arbitrary (not necessarily
+commuting) unitaries of order dividing four in a tracial von Neumann algebra $(\mathcal N,\tau)$, $E_k=V_k^*$, and for
+$x\in\Z_{4d}$ let $Q_x$ be the spectral projection of $E_k$ for the eigenvalue $i^a$, where $x=k-da$ ($0\le k\le d-1$,
+$a\in\Z_4$). Put $A_x=Q_x$, $B_x=Q_{x+d}$ and $N=4d$. Then $A_xB_x=0$, $\sum_xA_x=\sum_xB_x=d\cdot\one$, and the
+computation in the proof of Lemma~\ref{lem:cot} gives
+\begin{equation}\label{eq:projform}
+F(V)=\frac12\sum_{x,y\in\Z_{4d}}\kappa(x-y)\,\tau(A_xB_y)-\frac d2 .
+\end{equation}
+This suggests the following operator version of Theorem~\ref{thm:A}.
+
+\begin{question}\label{q:Lq}
+Let $A_x,B_x$ ($x\in\Z_N$) be orthogonal projections in a tracial von Neumann algebra with $A_xB_x=0$ for all
+$x$, $\sum_xA_x=a\cdot\one$ and $\sum_xB_x=b\cdot\one$. Is
+$\sum_{x,y}\kappa(x-y)\,\tau(A_xB_y)\le\Phi_N(a,b)$?
+\end{question}
+
+A positive answer for $N=4d$ and $a=b=d$ (even only for the families of the form above) would prove the optimality
+of the DKZ measurements on maximally entangled states for all $d$. For commuting families the answer is positive by
+Theorem~\ref{thm:A}, applied to each joint eigenvector. For matrices the same holds if the $A_x$ commute among
+themselves and the $B_x$ commute among themselves: if $(e_i)$ and $(f_j)$ are joint eigenbases, with
+$A_xe_i=[x\in S_i]e_i$ and $B_xf_j=[x\in T_j]f_j$, then $|S_i|=a$, $|T_j|=b$, the matrix $|\langle e_i,f_j\rangle|^2$ is
+doubly stochastic, $\langle e_i,f_j\rangle=0$ unless $S_i\cap T_j=\emptyset$ (because $A_xB_x=0$), and the left side
+equals $\frac1M\sum_{i,j}|\langle e_i,f_j\rangle|^2\ip{S_i}{T_j}\le\Phi_N(a,b)$. The operator constraints cannot be
+weakened to $\sum_x\tau(A_x)=a$, $\sum_x\tau(B_x)=b$: a mixture that, with probability $\frac12$, uses the sets
+$([0,2),[-2,0))$ and otherwise empty sets has $\sum_x\tau(A_x)=\sum_x\tau(B_x)=1$ and value
+$\frac12\Phi_{20}(2,2)=7.216\ldots>\Phi_{20}(1,1)=\cot(\pi/20)=6.313\ldots$ for $N=20$.
+
+The cyclic symmetry of Lemma~\ref{lem:cyclic} holds verbatim for such families, with the projections
+$C_x=\one-A_x-B_x$ and $\ip AB_\tau=\sum_{x,y}\kappa(x-y)\tau(A_xB_y)$. The exchange identity of Lemma~\ref{lem:swap}
+survives in a weak form: if $X$ is a projection with $X\le A_x$ and $X\le B_{x+1}$, then replacing
+$(A_x,B_x,A_{x+1},B_{x+1})$ by $(A_x-X,B_x+X,A_{x+1}+X,B_{x+1}-X)$ preserves all constraints, leaves every $C_t$
+unchanged, and changes the pairing by $\sum_{t\ne x,x+1}\delta(x-t)\,\tau(XC_t)\ge0$ (use $\ip AB_\tau=\ip BC_\tau$).
+In the non-commutative case such subprojections need not exist, and we do not know operator analogues of
+Proposition~\ref{prop:cont} and of the junction inequality.
+
+\subsection{Summary of the status of Problem 27B (maximally entangled part)}
+The inequality $F(V)\le\FD$ (equivalently $I_d\le\IME(d)$ for projective measurements on maximally entangled
+states) is proved for commuting families for all $d$ (this paper), and for all families for $d\le12$ by exact
+certificates~\cite{repo}; for $d=2$ it is Tsirelson's bound. It is open for non-commuting families when $d\ge13$.
+Within the commutative sector, Corollary~\ref{cor:C} also gives the uniqueness (``necessarily of DKZ form'') asked
+for in~\cite{OQP}.
+
+\appendix
+\section{Proof of Theorem~\ref{thm:reduction} and Proposition~\ref{prop:links}}\label{app:reduction}
+
+Write $\tau$ for the normalised trace on the relevant matrix algebra.
+
+\emph{Invariances.} For a quadruple $R=(R_1,R_2,R_3,R_4)$ of unitaries with $R_i^d=1$ let
+$\rho(R)=(R_2,R_3,R_4,wR_1)$, again a quadruple of this kind. Directly from the definitions,
+$L^{(0)}_n(\rho R)=R_2^nR_3^{-n}=L^{(1)}_n(R)$, $L^{(1)}_n(\rho R)=L^{(2)}_n(R)$,
+$L^{(2)}_n(\rho R)=R_4^n(wR_1)^{-n}=L^{(3)}_n(R)$ and $L^{(3)}_n(\rho R)=w^{-n}(wR_1)^nR_2^{-n}=L^{(0)}_n(R)$. So
+$L^{(i)}_n(\rho R)=L^{(i+1)}_n(R)$ with the upper index read modulo $4$; in particular $\Lambda_n(\rho R)=\Lambda_n(R)$ and
+$S(\rho R)=S(R)$ by \eqref{eq:Strace}. Moreover $\rho^4(R)=wR$ and $\rho^{4d}(R)=R$. For a direct sum $R\oplus R'$ on
+$\C^D\oplus\C^{D'}$, $S$ is the average of $S(R)$ and $S(R')$ with weights $D$ and $D'$.
+
+\emph{Covariant strategies: proof of (1).} Let $R=R^V$ as in \eqref{eq:covariant}. From $W^4=\sum_k|k\rangle\langle k|\otimes w^k=Z_0\otimes\one$
+and $Z_0XZ_0^*=wX$ we get $WR_4W^*=W^4R_1W^{-4}=wR_1$. Hence $L^{(1)}_n=WL^{(0)}_nW^*$, $L^{(2)}_n=W^2L^{(0)}_nW^{-2}$, and
+$W^3L^{(0)}_nW^{-3}=W^3R_1^nW^{-3}\,W^4R_1^{-n}W^{-4}=w^{-n}R_4^nR_1^{-n}=L^{(3)}_n$. So all four links have the trace
+$\tau(L^{(0)}_n)$. Since $R_1^nWR_1^{-n}=\sum_k|k\rangle\langle k|\otimes W_{k-n}$ with $W_k=z^kV_k$ and indices modulo $d$,
+\[
+L^{(0)}_n=\sum_{k}|k\rangle\langle k|\otimes W_{k-n}W_k^*,\qquad
+\tau(L^{(0)}_n)=\frac{z^{-n}}d\Bigl[\sum_{k=n}^{d-1}\tr(V_{k-n}V_k^*)+i\sum_{k=0}^{n-1}\tr(V_{k-n+d}V_k^*)\Bigr],
+\]
+using $z^d=i$ for $k<n$. Since $w^{-n}=e^{-4i\psi_n}$ and $z^{-n}=e^{-i\psi_n}$, we have
+$c_n=-1/(1-e^{-4i\psi_n})=\frac i2\,e^{2i\psi_n}/\sin(2\psi_n)$ and
+$4c_nz^{-n}=i\,e^{i\psi_n}/(\sin\psi_n\cos\psi_n)=i\csc\psi_n-\sec\psi_n=-h_n$. Therefore
+\[
+\sum_{n=1}^{d-1}c_n\Lambda_n=4\sum_nc_n\tau(L^{(0)}_n)
+=-\frac1d\sum_{n}h_n\Bigl[\sum_{k\ge n}\tr(V_{k-n}V_k^*)+i\sum_{k<n}\tr(V_{k-n+d}V_k^*)\Bigr].
+\]
+The first inner sum runs over the pairs $j=k-n<k$ with $k-j=n$ and gives $\sum_{j<k}h_{k-j}\tr(V_jV_k^*)$. In the second,
+put $p=k<q=k-n+d$, so $q-p=d-n$; since $\psi_{d-n}=\frac\pi2-\psi_n$ we have $h_{d-m}=\csc\psi_m-i\sec\psi_m$, i.e.\
+$i\,h_{d-m}=\overline{h_m}$, and the second part equals $\sum_{p<q}\overline{h_{q-p}}\,\tr(V_qV_p^*)
+=\sum_{p<q}\overline{h_{q-p}\tr(V_pV_q^*)}$. Hence $\sum_nc_n\Lambda_n=-\frac2dF(V)$ and
+$S(R^V)=2(d-1)-\frac2dF(V)$; Lemma~\ref{lem:chain} gives $I_d=4F(V)/(d(d-1))$.
+
+\emph{Twirl: proof of (2).} Let $R$ act on $\C^D$ and let $\widetilde R_i=\bigoplus_{r\in\Z_{4d}}(\rho^rR)_i$ on
+$\C^{4d}\otimes\C^D$. Then $S(\widetilde R)=S(R)$, so $I_d(\widetilde R)=I_d(R)$, and $R$ is the direct summand $r=0$.
+Let $W$ be the shift $W(e_{r+1}\otimes v)=e_r\otimes v$. Since $(\rho^{r+1}R)_i=(\rho^rR)_{i+1}$ for $i\le3$ and
+$(\rho^{r+1}R)_4=w(\rho^rR)_1$, we get $W\widetilde R_iW^*=\widetilde R_{i+1}$ ($i\le3$), $W\widetilde R_4W^*=w\widetilde R_1$ and
+$W^{4d}=1$. The unitary $Z=W^4$ satisfies $Z^d=1$ and $Z\widetilde R_1Z^*=w\widetilde R_1$. Let $H_k=\ker(Z-w^k)$,
+$k\in\Z_d$; then $\widetilde R_1H_k=H_{k+1}$, all $H_k$ have the same dimension $M$, and $dM=4dD$. Choose an orthonormal
+basis $(f_\mu)$ of $H_0$ and put $e_{k,\mu}=\widetilde R_1^kf_\mu$, $0\le k\le d-1$. This is an orthonormal basis in which
+$\widetilde R_1=X\otimes\one_M$ (note $\widetilde R_1^d=1$) and $Z=Z_0\otimes\one_M$. Since $W$ commutes with $Z$, it
+preserves every $H_k$, so $W=\sum_k|k\rangle\langle k|\otimes W_k$ with $W_k^4=w^k$; with $V_k=z^{-k}W_k$ we have $V_k^4=1$,
+and $\widetilde R$ is exactly $R^V$ in this basis. Another choice of $(f_\mu)$ conjugates all $V_k$ by the same unitary.
+Part (1) now gives $I_d(R)=4F(V)/(d(d-1))$. The final equivalence in the theorem follows from (1), (2) and
+$\IME(d)=4\FD/(d(d-1))$.
+
+\emph{Proof of Proposition~\ref{prop:links}.} By the computation above, $L^{(i)}_n(\rho^rR)=L^{(i+r)}_n(R)$ (upper index modulo
+$4$), so $L^{(i)}_n(\widetilde R)=\bigoplus_rL^{(i+r)}_n(R)$. Hence $\widetilde R$ has equal links if and only if $R$ has.
+In the basis $(e_{k,\mu})$, $\widetilde R=R^V$ and, as shown in the proof of (1), $L^{(i)}_n=W^iL^{(0)}_nW^{-i}$ for all $i$;
+so $R^V$ has equal links if and only if $W$ commutes with every $L^{(0)}_n$. Comparing the diagonal blocks,
+$WL^{(0)}_nW^*=\sum_k|k\rangle\langle k|\otimes W_kW_{k-n}W_k^*W_k^*$, which equals $L^{(0)}_n$ if and only if
+$W_kW_{k-n}=W_{k-n}W_k$ for every $k$. For $n=1,\dots,d-1$ this says that all $W_k$, equivalently all $V_k$, commute
+pairwise.
+
+\section*{Data and code}
+The check scripts, their outputs, and a description of the commands are provided with this manuscript
+(folders \texttt{scripts/} and \texttt{logs/}). The exact certificates for $d\le12$ referred to above are available
+at \url{https://github.com/anshM123/CGLMP}.
+
+\begin{thebibliography}{99}
+
+\bibitem{ADGL}
+A.~Ac\'{\i}n, T.~Durt, N.~Gisin and J.~I. Latorre, \emph{Quantum nonlocality in two three-level systems},
+Phys. Rev. A \textbf{65} (2002), 052325.
+
+\bibitem{BK}
+R.~Ba\~nuelos and M.~Kwa\'snicki, \emph{On the $\ell^p$-norm of the discrete Hilbert transform}, Duke Math. J.
+\textbf{168} (2019), no.~3; arXiv:1709.07427.
+
+\bibitem{Boole}
+G.~Boole, \emph{On the comparison of transcendents, with certain applications to the theory of definite
+integrals}, Philos. Trans. R. Soc. Lond. \textbf{147} (1857), 745--803.
+
+\bibitem{Tsirelson}
+B.~S. Cirel'son, \emph{Quantum generalizations of Bell's inequality}, Lett. Math. Phys. \textbf{4} (1980), no.~2,
+93--100.
+
+\bibitem{CGLMP}
+D.~Collins, N.~Gisin, N.~Linden, S.~Massar and S.~Popescu, \emph{Bell inequalities for arbitrarily high-dimensional
+systems}, Phys. Rev. Lett. \textbf{88} (2002), 040404; arXiv:quant-ph/0106024.
+
+\bibitem{CLM}
+L.~Colzani, E.~Laeng and L.~Monz\'on, \emph{Variations on a theme of Boole and Stein--Weiss}, J. Math. Anal. Appl.
+\textbf{363} (2010), no.~1, 225--229.
+
+\bibitem{DKZ}
+T.~Durt, D.~Kaszlikowski and M.~\.Zukowski, \emph{Violations of local realism with quantum systems described by
+$N$-dimensional Hilbert spaces up to $N=16$}, Phys. Rev. A \textbf{64} (2001), 024101.
+
+\bibitem{GL}
+C.~Giannitsi and M.~T. Lacey, \emph{Lower estimate on square function of an indicator set}, arXiv:2307.05692 (2023).
+
+\bibitem{IR}
+M.~Ioannou and D.~Rosset, \emph{Noncommutative polynomial optimization under symmetry}, arXiv:2112.10803 (2021).
+
+\bibitem{OQP}
+IQOQI Vienna, \emph{Open Quantum Problems}, Problem~27: \emph{The power of CGLMP inequalities},
+\url{https://oqp.iqoqi.oeaw.ac.at/the-power-of-cglmp-inequalities}; archived copy of 29 October 2023:
+\url{https://web.archive.org/web/20231029013544/https://oqp.iqoqi.oeaw.ac.at/the-power-of-cglmp-inequalities}.
+
+\bibitem{KSTBSA}
+J.~Kaniewski, I.~\v{S}upi\'c, J.~Tura, F.~Baccari, A.~Salavrakos and R.~Augusiak, \emph{Maximal nonlocality from
+maximal entanglement and mutually unbiased bases, and self-testing of two-qutrit quantum systems}, Quantum
+\textbf{3} (2019), 198.
+
+\bibitem{KGZMZ}
+D.~Kaszlikowski, P.~Gnaci\'nski, M.~\.Zukowski, W.~Miklaszewski and A.~Zeilinger, \emph{Violations of local realism
+by two entangled $N$-dimensional systems are stronger than for two qubits}, Phys. Rev. Lett. \textbf{85} (2000),
+4418--4421.
+
+\bibitem{Laeng}
+E.~Laeng, \emph{On the $L^p$ norms of the Hilbert transform of a characteristic function}, J. Funct. Anal.
+\textbf{262} (2012), no.~10, 4534--4539.
+
+\bibitem{LVN}
+B.~Lang, T.~V\'ertesi and M.~Navascu\'es, \emph{Closed sets of correlations: answers from the zoo}, J. Phys. A
+\textbf{47} (2014), 424029.
+
+\bibitem{LL}
+E.~H. Lieb and M.~Loss, \emph{Analysis}, 2nd ed., Graduate Studies in Mathematics \textbf{14}, American
+Mathematical Society, Providence, RI, 2001.
+
+\bibitem{Loomis}
+L.~H. Loomis, \emph{A note on the Hilbert transform}, Bull. Amer. Math. Soc. \textbf{52} (1946), 1082--1086.
+
+\bibitem{repo}
+A.~Mishra and A.~Senthilkumar, \emph{CGLMP on maximally entangled states: exact optimality, rigidity and
+Tsirelson bounds}, preprint and data repository (2026), \url{https://github.com/anshM123/CGLMP}.
+
+\bibitem{MV}
+H.~L. Montgomery and R.~C. Vaughan, \emph{Hilbert's inequality}, J. London Math. Soc. (2) \textbf{8} (1974), 73--82.
+
+\bibitem{SATWAP}
+A.~Salavrakos, R.~Augusiak, J.~Tura, P.~Wittek, A.~Ac\'{\i}n and S.~Pironio, \emph{Bell inequalities tailored to
+maximally entangled states}, Phys. Rev. Lett. \textbf{119} (2017), 040402.
+
+\bibitem{SSKA}
+S.~Sarkar, D.~Saha, J.~Kaniewski and R.~Augusiak, \emph{Self-testing quantum systems of arbitrary local dimension
+with minimal number of measurements}, npj Quantum Inf. \textbf{7} (2021), 151.
+
+\bibitem{SW}
+E.~M. Stein and G.~Weiss, \emph{An extension of a theorem of Marcinkiewicz and some of its applications}, J. Math.
+Mech. \textbf{8} (1959), no.~2, 263--284.
+
+\bibitem{TMMD}
+X.~K. Tan, J.~Menezes, S.~D. Murthy and A.~C. Dada, \emph{Direct adaptive certification of high-dimensional
+entanglement with Bell tests}, arXiv:2608.28235 (2026).
+
+\bibitem{ZG}
+S.~Zohren and R.~D. Gill, \emph{Maximal violation of the Collins--Gisin--Linden--Massar--Popescu inequality for
+infinite dimensional states}, Phys. Rev. Lett. \textbf{100} (2008), 120406.
+
+\end{thebibliography}
+
+\end{document}

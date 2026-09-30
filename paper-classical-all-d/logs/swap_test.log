@@ -1,0 +1,7 @@
+# command: python swap_test.py 9,3,3 10,3,3 12,3,4 12,4,4
+# python 3.14.3 | numpy 2.4.6 | scipy 1.17.1 | mpmath 1.3.0
+N=9 a=3 b=3: Q_block=7.0394 maxQ=7.0394; out-of-order swaps tested 5670, decreasing: 0
+N=10 a=3 b=3: Q_block=8.6599 maxQ=8.6599; out-of-order swaps tested 15400, decreasing: 0
+N=12 a=3 b=4: Q_block=12.4641 maxQ=12.4641; out-of-order swaps tested 118440, decreasing: 0
+N=12 a=4 b=4: Q_block=13.0415 maxQ=13.0415; out-of-order swaps tested 151200, decreasing: 0
+# wall time: 2 s

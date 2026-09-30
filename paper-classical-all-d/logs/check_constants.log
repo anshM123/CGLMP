@@ -1,0 +1,10 @@
+# command: python check_constants.py
+# python 3.14.3 | numpy 2.4.6 | scipy 1.17.1 | mpmath 1.3.0
+(C1) |eps(1)| = 2 log 2 - 1 in [0.38629436112, 0.38629436112];  |eps(5)| in [0.00135513550689, 0.00135513550689];  |eps(1)| - |eps(5)| in [0.384939225613, 0.384939225613]  (>= 0.38493: True)
+(C2) T = sum_(i>=3) 4^(3-i)/(i(2i-1)) in [0.0772739337989, 0.0772739337989];  T < 0.0773: True;  0.0773 < 4/45 = 0.0888888888889: True
+(C3) zeta(3) in [1.20205690309717, 1.20205690322208], zeta(5) in [1.03692775514337, 1.03692775514337]
+     c_sc in [0.0778480142548, 0.0778480142756]  (<= 0.07785: True);  c_fw in [0.114806631916, 0.114806631916]  (<= 0.11481: True)
+(C4) -(w-1)*0.38493 + 0.07785 w + 0.11481 = 0.49974 - 0.30708 w;  at w = 2: -0.11442;  negative for w = 2..199: True (linear and decreasing in w, hence negative for all w >= 2)
+(C5) series = closed form (max diff 1.72e-38); |eps(u)| <= 1/(6u^3) + (4/45)u^-5 for u = 2..10^4: True; |eps| strictly decreasing on 1..10^4: True;
+     sum_(m>=2) (m-1)|eps(m)| = 0.0772156649 (<= c_sc),  sum_(m>=2) m|eps(m)| = 0.1137056389 (<= c_fw)
+# wall time: 1 s

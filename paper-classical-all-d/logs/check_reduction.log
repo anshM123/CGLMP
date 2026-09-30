@@ -1,0 +1,24 @@
+# command: python check_reduction.py
+# python 3.14.3 | numpy 2.4.6 | scipy 1.17.1 | mpmath 1.3.0
+(R1) random behaviours, d = 2..7: max |I_CGLMP - (4 - 2S/(d-1))| = 1.4e-15
+(R2) random max-ent PVM strategies (d = 3..6, D = 2..6): max |I_CGLMP - (4 - 2 S_trace/(d-1))|, |S - (d Pi - 1)| = 1.9e-15
+(R3) covariant strategies from random order-4 V (M = 1..3, d = 2..6; min commutator norm 0.92): max |I_CGLMP - 4F(V)/(d(d-1))| = 5.3e-15
+(R4) twirl + Stone-von Neumann on random strategies (d = 3..5): covariance err 7.3e-16, Z-eigenspace err 9.5e-16, max |V^4 - 1| = 1.2e-14, max |I_CGLMP(R) - 4F(V)/(d(d-1))| = 1.3e-15
+(R5a) same random strategies: min over samples of max|L_1^(i) - L_1^(0)| = 1.29 (links unequal), min commutator norm of the V's = 1.63 (V non-commuting)
+(R5b) equal-link strategies (commuting V, random local unitary, d = 3..5): max link difference 6.9e-15, commutator norm of the recovered V's 4.8e-15, value err 4.4e-15
+(R6) d=2: max over a in Z_4^d of I_d = 2.828427124746, I_ME(d) = 2.828427124746, #maximisers = 8 (4d = 8), all one-step: True; max |I_CGLMP - 4F(a)/(d(d-1))| = 1.8e-15
+(R6) d=3: max over a in Z_4^d of I_d = 2.872934051172, I_ME(d) = 2.872934051172, #maximisers = 12 (4d = 12), all one-step: True; max |I_CGLMP - 4F(a)/(d(d-1))| = 8.9e-16
+(R6) d=4: max over a in Z_4^d of I_d = 2.896243218459, I_ME(d) = 2.896243218459, #maximisers = 16 (4d = 16), all one-step: True; max |I_CGLMP - 4F(a)/(d(d-1))| = 1.8e-15
+(R6) d=5: max over a in Z_4^d of I_d = 2.910544808072, I_ME(d) = 2.910544808072, #maximisers = 20 (4d = 20), all one-step: True; max |I_CGLMP - 4F(a)/(d(d-1))| = 4.0e-15
+(R6) d=6: max over a in Z_4^d of I_d = 2.920203606379, I_ME(d) = 2.920203606379, #maximisers = 24 (4d = 24), all one-step: True; max |I_CGLMP - 4F(a)/(d(d-1))| = 1.8e-15
+(R6) d=7: max over a in Z_4^d of I_d = 2.927160942425, I_ME(d) = 2.927160942425, #maximisers = 28 (4d = 28), all one-step: True; max |I_CGLMP - 4F(a)/(d(d-1))| = 3.1e-15
+(R7) d=2: CGLMP value of the CGLMP/DKZ measurements = 2.828427124746, I_ME(d) = 2.828427124746 (probabilities vs eq. (15): err 3.9e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 2.5e-16
+(R7) d=3: CGLMP value of the CGLMP/DKZ measurements = 2.872934051172, I_ME(d) = 2.872934051172 (probabilities vs eq. (15): err 5.6e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 8.5e-16
+(R7) d=4: CGLMP value of the CGLMP/DKZ measurements = 2.896243218459, I_ME(d) = 2.896243218459 (probabilities vs eq. (15): err 7.2e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 7.0e-16
+(R7) d=5: CGLMP value of the CGLMP/DKZ measurements = 2.910544808072, I_ME(d) = 2.910544808072 (probabilities vs eq. (15): err 1.7e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 1.7e-15
+(R7) d=6: CGLMP value of the CGLMP/DKZ measurements = 2.920203606379, I_ME(d) = 2.920203606379 (probabilities vs eq. (15): err 7.8e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 2.2e-15
+(R7) d=7: CGLMP value of the CGLMP/DKZ measurements = 2.927160942425, I_ME(d) = 2.927160942425 (probabilities vs eq. (15): err 1.4e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 2.3e-15
+(R7) d=8: CGLMP value of the CGLMP/DKZ measurements = 2.932409608704, I_ME(d) = 2.932409608704 (probabilities vs eq. (15): err 4.4e-16); max |R_i(DKZ) - W0^-2 R^(0)_i W0^2| = 1.3e-15
+(R8) projection form F = (1/2) sum cot(pi(x-y)/4d) tau(A_x B_y) - d/2, random non-commuting E (d = 2..5): max err 6.9e-15
+(R9) Ising form, random non-commuting E (d = 2..6): max err 3.6e-15;  Clifford rotation (d, value, d(d-1), F_DKZ): [(2, 2.0, 2, 1.414214), (3, 6.0, 6, 4.309401), (5, 20.0, 20, 14.552724), (8, 56.0, 56, 41.053735), (13, 156.0, 156, 114.919927)]
+# wall time: 6 s
