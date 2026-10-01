@@ -1,0 +1,7 @@
+d=13: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [36, 36, 36])
+d=13: (b) all two-eigenvalue relations T_1..T_12 lie in the SOS support of block (0,0)
+d=13: RIGIDITY support conditions verified
+
+real	0m1.909s
+user	0m0.000s
+sys	0m0.046s

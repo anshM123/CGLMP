@@ -1,0 +1,10 @@
+# independent re-run: python verify/verify_tracial_iv.py 14 (from certificates/maxent); sha256 of the certificate first
+d=14: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=14: identity check over 1974 symmetry classes (437593 expanded terms): OK
+d=14: all 38 Gram blocks positive definite (rigorous interval Cholesky, min radicand > [0.00009688277766718334817712198550940626863518925523457453137979542759, 0.00009688277766718334817712198550940626863518925523457453137979542759])
+d=14: lam = S_DKZ exactly;  Pi_ME = 0.559715543811767096154848407797 ;  I_ME = 2.94830498255927086982032650628
+d=14: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+
+real	1m27.493s
+user	0m0.015s
+sys	0m0.015s

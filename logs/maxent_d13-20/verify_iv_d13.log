@@ -1,0 +1,9 @@
+d=13: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=13: identity check over 1654 symmetry classes (370209 expanded terms): OK
+d=13: all 36 Gram blocks positive definite (rigorous interval Cholesky, min radicand > [0.00006982178013212390680390697332394406041272263709109523307003234615, 0.00006982178013212390680390697332394406041272263709109523307003234615])
+d=13: lam = S_DKZ exactly;  Pi_ME = 0.563077785432410569766736882828 ;  I_ME = 2.94666479822977709883873675387
+d=13: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+
+real	2m23.195s
+user	0m0.000s
+sys	0m0.046s

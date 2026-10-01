@@ -210,13 +210,24 @@ class Field:
             return s / da
 
     def to_cfloat(self, x):
+        """float approximation (non-rigorous; diagnostics only).  Each power-basis coefficient is converted by exact
+        rational scaling ak/da (Python int true division: correctly rounded, no intermediate overflow even when ak
+        and da have thousands of bits); if a coefficient itself exceeds the float range, fall back to mpmath."""
         a, da = x
-        import cmath
-        s = 0j
-        for k, ak in enumerate(a):
-            if ak:
-                s += ak * cmath.exp(2j * cmath.pi * k / self.N)
-        return s / da
+        roots = self.__dict__.get("_roots_c")
+        if roots is None:
+            import cmath
+            roots = [cmath.exp(2j * cmath.pi * k / self.N) for k in range(self.deg)]
+            self._roots_c = roots
+        try:
+            s = 0j
+            for k, ak in enumerate(a):
+                if ak:
+                    s += (ak / da) * roots[k]
+            return s
+        except OverflowError:
+            v = self.to_complex(x, 40)
+            return complex(float(v.real), float(v.imag))
 
     def is_real(self, x):
         return self.is_zero(self.sub(x, self.conj(x)))

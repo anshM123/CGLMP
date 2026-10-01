@@ -1,3 +1,7 @@
 __pycache__/
 *.pyc
 lean/.lake/
+
+# decompressed large certificates (the repository stores the .xz files)
+certificates/maxent/cert_tracial_d1[3-9].pkl
+certificates/maxent/cert_tracial_d2[0-9].pkl

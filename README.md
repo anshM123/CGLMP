@@ -16,22 +16,31 @@ Notation:
 
   I_ME(d) = 4/(d(d−1)) · Σ_{j=1}^{d−1} (d−j) sec(πj/(2d)).
 
-### 1. DKZ is optimal on maximally entangled states (d = 3, …, 12)
+### 1. DKZ is optimal on maximally entangled states (d = 3, …, 20)
 
 For every local dimension D and all projective measurements on Φ_D, the CGLMP_d value is at most I_ME(d). DKZ attains this value.
-- **Proof:** an exact sum-of-squares certificate in the tracial (maximally entangled) relaxation, one for each d.
-- **Data:** `certificates/maxent/cert_tracial_d{3..12}.pkl`.
-- **Checker:** `verify/verify_tracial.py`.
-- **Values:** I_ME = 2.8729340512 (d=3), 2.8962432185 (d=4), 2.9105448081 (d=5), …, 2.9447540269 (d=12). The full digits are in the logs.
+- **Proof:** an exact sum-of-squares certificate in the tracial (maximally entangled) relaxation, one for each d. The coefficients are exact elements of Q(ζ₄d).
+- **Data:**
+  - `certificates/maxent/cert_tracial_d{3..12}.pkl`.
+  - `certificates/maxent/cert_tracial_d{13..20}.pkl.xz`. These are xz-compressed; run `python decompress.py` in that folder, which also checks the SHA-256 sums in `SHA256SUMS_d13-20.txt`.
+- **Checkers:**
+  - **d = 3..12:** `verify/verify_tracial.py`. It checks the polynomial identity exactly and positivity by exact LDLᵀ.
+  - **d = 13..20:** `verify/verify_tracial_iv.py`. It is the same checker, except that positivity is certified by a rigorous interval Cholesky (mpmath interval arithmetic, outward rounding) of the exact Gram blocks.
+  - **Why the switch:** exact LDLᵀ is impractically slow at these sizes. Its intermediate numbers grow to about 88,000 bits, so one run takes days.
+  - **Cross-validation:** both checkers were run on d = 3..12. They agree, and the interval radicands match the exact pivots to about 60 digits.
+- **Values:** I_ME = 2.8729340512 (d=3), 2.8962432185 (d=4), 2.9105448081 (d=5), …, 2.9447540269 (d=12), …, 2.9547221906 (d=20). The full digits are in the logs.
+- **Logs:**
+  - d = 13..20: `logs/maxent_d13-20/` (`verify_iv_d*.log`, `verify_rig_d*.log`).
+  - Independent re-runs of d = 14 and d = 20: `logs/maxent_d13-20/recheck_*.log`.
 
-### 2. Rigidity and self-testing within maximally entangled strategies (d = 3, …, 12)
+### 2. Rigidity and self-testing within maximally entangled strategies (d = 3, …, 20)
 
 Suppose projective measurements on Φ_D attain I_ME(d). Then d divides D, and up to a local unitary the strategy is DKZ ⊗ 1 on C^d ⊗ C^{D/d}.
 - **Certificate side:** the support conditions on the certificate, `verify/check_support.py` and `verify/verify_rigidity.py`.
 - **Algebraic side:** holds for all d. It consists of a Jordan-type lemma, an orthogonality induction and imprimitivity.
   - It is written up in `rigidity/RIGIDITY.md`.
   - Its core is machine-checked in Lean 4 with Mathlib in `lean/CGLMPRigidity/`, using only the standard axioms.
-- The write-up states "unconditional for d = 3..9". The d = 10, 11, 12 certificates were verified afterwards, see `logs/independent_verify_27B_d10to12.log`.
+- The write-up states "unconditional for d = 3..9". The d = 10, 11, 12 certificates were verified afterwards, see `logs/independent_verify_27B_d10to12.log`. The support conditions for d = 13..20 are in `logs/maxent_d13-20/verify_rig_d*.log`.
 
 ### 3. Exact Tsirelson bounds over all states (d = 3, …, 8)
 
@@ -52,7 +61,7 @@ On Φ_d, explicit competitor strategies give certified statistical strength (KL 
 
 ### 5. Noise robustness
 
-- **CGLMP witness:** the critical visibility of Φ_d, detected with the CGLMP inequality, is at least 2/I_ME(d), with equality iff DKZ. This follows from result 1 and holds for d = 3..12.
+- **CGLMP witness:** the critical visibility of Φ_d, detected with the CGLMP inequality, is at least 2/I_ME(d), with equality iff DKZ. This follows from result 1 and holds for d = 3..20.
 - **All Bell inequalities:** proved for d = 3 using the complete (2,2,3) facet list. It is numerical only for d = 4, 5.
 
 ### 6. Reductions toward all d
@@ -86,8 +95,8 @@ The problem statement asks for more than is proved here:
 
 | Claim of OQP 27B | Status here |
 |---|---|
-| DKZ optimal on maximally entangled states | proved for d = 3..12 (projective measurements); proved for **every d** among equal-link (commuting) strategies and among the non-commuting two-window families (result 7); open in general for d ≥ 13 |
-| DKZ unique (rigidity) | proved for d = 3..12; for every d among equal-link strategies (result 7); algebraic part proved for all d |
+| DKZ optimal on maximally entangled states | proved for d = 3..20 (projective measurements); proved for **every d** among equal-link (commuting) strategies and among the non-commuting two-window families (result 7); open in general for d ≥ 21 |
+| DKZ unique (rigidity) | proved for d = 3..20; for every d among equal-link strategies (result 7); algebraic part proved for all d |
 | Tsirelson bound, all states | exact for d = 3..8 |
 | KL optimality of DKZ | **false** for d = 4..9 (d = 4 first shown by Y. Zhang, 2026) |
 | Noise robustness against all Bell inequalities | proved for d = 3; numerical for d = 4, 5 |
@@ -98,7 +107,7 @@ Part 27A (whether all facets of the (2,2,d) local polytope are CGLMP-type) was a
 
 | Path | Contents |
 |---|---|
-| `certificates/maxent/` | exact max-ent SOS certificates, d = 3..12 |
+| `certificates/maxent/` | exact max-ent SOS certificates, d = 3..20 (d >= 13 xz-compressed) |
 | `certificates/allstates/` | exact all-state SOS certificates, d = 3..8 |
 | `verify/` | independent exact checkers |
 | `builders/` | the programs that produced the certificates (not needed for checking) |
@@ -121,6 +130,12 @@ The max-ent certificates must be checked from their own folder:
 
 ```bash
 cd certificates/maxent && python ../../verify/verify_tracial.py 3 4 5 6 7 8 9 10 11 12
+```
+
+For d = 13..20, decompress the certificates first, then run the interval checker. Run times range from about 1 minute (d = 14) to about 1.2 hours (d = 19).
+
+```bash
+cd certificates/maxent && python decompress.py && python ../../verify/verify_tracial_iv.py 13
 ```
 
 Each d ends with the line `VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME`. Run times are seconds for small d and about three hours each for d = 11, 12.

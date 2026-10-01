@@ -1,0 +1,5 @@
+# start 2026-09-30 13:39:32: C:/Python314/python.exe -B verify_rigidity.py 16
+d=16: (a) sector-0 blocks kappa=i,-1,-i: kernel = whole block (sizes [45, 45, 45])
+d=16: (b) all two-eigenvalue relations T_1..T_15 lie in the SOS support of block (0,0)
+d=16: RIGIDITY support conditions verified
+EXIT=0 (2 s, peak working set 0.18 GB) # end 2026-09-30 13:39:34

@@ -1,0 +1,7 @@
+# start 2026-09-30 14:53:38: C:/Python314/python.exe -u -B verify_tracial_iv.py 18
+d=18: S_op invariant under rho, sigma, reversal (mod cyclic)
+d=18: identity check over 5291 symmetry classes (1377465 expanded terms): OK
+d=18: all 54 Gram blocks positive definite (rigorous interval Cholesky, min radicand > [0.00003749045029789158098374592862352432278227821471814775379146997123, 0.00003749045029789158098374592862352432278227821471814775379146997123])
+d=18: lam = S_DKZ exactly;  Pi_ME = 0.549946066571514330501095981961 ;  I_ME = 2.95305538843679318246826733232
+d=18: VERIFIED: max CGLMP value over maximally entangled states (any dimension) = I_ME
+EXIT=0 (215 s, peak working set 0.36 GB) # end 2026-09-30 14:57:13
